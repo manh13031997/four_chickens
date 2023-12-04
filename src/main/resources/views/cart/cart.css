@@ -1,0 +1,25 @@
+.main-cart{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+.main-cart h2{
+    margin-bottom: 25px;
+}
+.main-cart table{
+    width: 100%;
+}
+.main-cart table thead tr th:first-child{
+    text-align: left;
+}
+.main-cart table tr td{
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+.main-cart table thead tr th:last-child{
+    text-align: right;
+}
+.main-cart table tbody tr th:last-child{
+    text-align: right;
+}
