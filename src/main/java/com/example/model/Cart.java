@@ -11,7 +11,7 @@ import java.util.Set;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private Long quantity;
     private String statusBuy;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

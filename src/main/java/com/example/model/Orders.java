@@ -10,7 +10,7 @@ import java.util.Date;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private Date orderDate;
     private String statusOrder;
     @ManyToOne

@@ -8,7 +8,7 @@ import lombok.Data;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private Long quantity;
     private Long price;
     private Long totalMoney;
