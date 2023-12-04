@@ -1,5 +1,6 @@
-package com.example.model;
+package com.example.model.entity;
 
+import com.example.model.entity.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 
