@@ -1,10 +1,13 @@
 package com.example.repository;
 
-import com.example.model.Cart;
-import com.example.model.User;
+
+import com.example.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface RepositoryCart extends JpaRepository<Cart,Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByName(String roleName);
 }
+
