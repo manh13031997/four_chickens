@@ -112,9 +112,44 @@ function login() {
 
     axios.post('http://localhost:8080/login', userLogin)
         .then(function (response) {
+            if (response.data.accessToken) {
+                localStorage.setItem('user', JSON.stringify(response.data))
+            }
             console.log("Đăng nhập thành công")
+            showAll()
         }).catch(function (err) {
         console.log(err)
         alert("Đăng nhập sai rồi bé ơi !")
     })
+}
+
+function auHeader(data) {
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (user && user.acessToken) {
+        return {Authorization: 'Bearer' + user.acessToken, data: data}
+    } else {
+        return ''
+    }
+}
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"))
+}
+function showUsers() {
+    axios.get("http://localhost:8080/admin/users", {headers: {"Authorization": `Bearer ${getCurrentUser().accessToken}`}})
+        .then(function (res) {
+            document.getElementById("main").innerHTML = `<h1>Hello ${getCurrentUser().username}</h1>
+            <button onclick="logout()">Logout</button>`;
+            console.log(res.data)
+        })
+}
+
+function logout() {
+    localStorage.clear();
+    showFormLogin();
+}
+
+if(getCurrentUser()){
+    showUsers();
+} else {
+    showFormLogin()
 }

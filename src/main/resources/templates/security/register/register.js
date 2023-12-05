@@ -135,5 +135,6 @@ function register() {
     axios.post('http://localhost:8080/register', userRegister)
         .then(function (response) {
             console.log("Đăng ký thành công")
+            showFormLogin()
         })
 }
