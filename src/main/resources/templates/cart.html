@@ -140,38 +140,72 @@
         </div>
     </div>
 </section>
-<section class="main-cart">
-    <form action="">
-        <div class="header-cart">
-            <div class="title-cart title_cart_mobile heading-bar">
-                <h1>Giỏ hàng</h1>
+<section id="title" class="container">
+    <h2 class="font-weight-bold ">Giỏ hàng</h2>
+    <hr>
+</section>
+<section id="cart-container" class="container my-5">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Xoá</td>
+                <td>Sản phẩm</td>
+                <td>Tên sản phẩm</td>
+                <td>Đơn giá</td>
+                <td>Số lượng</td>
+                <td>Thành tiền</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                <td><img src="../views/cart/Dien_thoai_co.jpeg"/></td>
+                <td><h5>Product1</h5></td>
+                <td>650000</td>
+                <td><input type="number" class="w-25 pl-1" value="1" min="0"></td>
+                <td><h5>650000</h5></td>
+            </tr>
+            <tr>
+                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                <td><img src="../views/cart/Dien_thoai_co.jpeg"/></td>
+                <td><h5>Product1</h5></td>
+                <td>650000</td>
+                <td><input type="number" class="w-25 pl-1" value="1" min="0"></td>
+                <td><h5>650000</h5></td>
+            </tr>
+            <tr>
+                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                <td><img src="../views/cart/Dien_thoai_co.jpeg"/></td>
+                <td><h5>Product1</h5></td>
+                <td>650000</td>
+                <td><input type="number" class="w-25 pl-1" value="1" min="0"></td>
+                <td><h5>650000</h5></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section id="cart-bottom" class="container">
+    <div class="row">
+        <div class="total col-lg-6 col-md-6 col-12"></div>
+        <div class="total col-lg-6 col-md-6 col-12">
+            <div>
+                <h5>Tổng cộng: </h5>
+                <div class="d-flex justify-content-between">
+                    <h6>Giá trị mặt hàng: </h6>
+                    <p>1950000</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h6>Phí vận chuyển: </h6>
+                    <p>50000</p>
+                </div>
+            <hr class="second-hr">
+            <div class="d-flex justify-content-between">
+                <h6>Tổng số tiền khách hàng phải trả: </h6>
+                <p>2000000</p>
             </div>
+            <button class="ml-auto">Thanh toán</button>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sản phẩm</th>
-                    <th>Tên gọi</th>
-                    <th>Đơn giá</th>
-                    <th>Số lượng</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item: ${product}">
-                    <td><img th:src="${product.photo}" alt="" style="width:80px; height:80px"></td>
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.price}"></td>
-                    <td></td>
-                    <td><button>Xoá</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="text-align: right" class="price-total">
-            <p style="font-weight: bold">Tổng cộng: <span>......</span><sup>đ</sup></p>
-        </div>
-    </form>
+    </div>
 </section>
 </body>
-
 </html>
