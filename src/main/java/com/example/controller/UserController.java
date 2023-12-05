@@ -53,16 +53,25 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> createUser(@RequestBody User user, BindingResult bindingResult) {
+    public ResponseEntity<Object> createUser(@RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Iterable<User> users = userService.findAll();
-        for (User currentUser : users) {
-            if (currentUser.getUsername().equals(user.getUsername())) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
+
+//        Iterable<User> users = userService.findAll();
+//        for (User currentUser : users) {
+//            if (currentUser.getUsername().equals(user.getUsername())) {
+//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//            }
+//        }
+
+        User checkExistUser = userService.findByUsername(user.getUsername());
+
+        if (checkExistUser != null) {
+            return new ResponseEntity<>("Username " + user.getUsername() + " đã tồn tại !", HttpStatus.CONFLICT);
         }
+
+
         if (!userService.isCorrectConfirmPassword(user)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -77,6 +86,17 @@ public class UserController {
             roles1.add(role1);
             user.setRoles(roles1);
         }
+
+//        Set<Role> roles = new HashSet<>();
+//        Role roleAdmin = roleService.findByName("ROLE_ADMIN");
+//        Role roleUser = roleService.findByName("ROLE_USER");
+//
+//        roles.add(roleAdmin);
+//        roles.add(roleUser);
+//
+//        user.setRoles(roles);
+
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setConfirmPassword(passwordEncoder.encode(user.getConfirmPassword()));
         userService.save(user);
