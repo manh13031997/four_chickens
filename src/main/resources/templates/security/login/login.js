@@ -5,7 +5,7 @@ function showFormLogin() {
         <div class="col-12">
             <ul class="breadcrumb">
                 <li>
-                    <a href="/static"><span>Trang chủ</span></a>
+                    <a class="btn" onclick="showSubHeader()"><span>Trang chủ</span></a>
                     <span>&nbsp;/&nbsp;</span>
                 </li>
                 <li><strong><span><b>Đăng nhập tài khoản</b></span></strong></li>
@@ -100,7 +100,6 @@ function showFormLogin() {
     document.getElementById("main").innerHTML = html;
 }
 
-
 function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -134,19 +133,29 @@ function auHeader(data) {
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"))
 }
-function showUsers() {
-    axios.get("http://localhost:8080/admin/users", {headers: {"Authorization": `Bearer ${getCurrentUser().accessToken}`}})
-        .then(function (res) {
-            document.getElementById("main").innerHTML = `<h1>Hello ${getCurrentUser().username}</h1>
-            <button onclick="logout()">Logout</button>`;
-            console.log(res.data)
-        })
+// function showUsers() {
+//     axios.get("http://localhost:8080/admin/users", {headers: {"Authorization": `Bearer ${getCurrentUser().accessToken}`}})
+//         .then(function (res) {
+//             document.getElementById("main").innerHTML = `<h1>Hello ${getCurrentUser().username}</h1>
+//             <button onclick="logout()">Logout</button>`;
+//             console.log(res.data)
+//         })
+// }
+
+// function logout() {
+//     localStorage.clear();
+//     showFormLogin();
+
+
+function showSubHeader() {
+    if(getCurrentUser()) {
+        showAll();
+    }else {
+        showAllProduct();
+    }
 }
 
-function logout() {
-    localStorage.clear();
-    showFormLogin();
-}
+showSubHeader()
 
 if(getCurrentUser()){
     showUsers();

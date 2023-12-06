@@ -1,10 +1,11 @@
-.row1{
+.container .row-create{
     border: 1px solid black;
     height: 510px;
     width: 900px;
     display: flex;
     justify-content: center;
     border-radius: 20px  20px  20px  20px;
+    border: 1px solid black;
 }
 /*.row2{*/
 /*    border: 1px solid black;*/
@@ -26,7 +27,7 @@
     /*border: 1px solid black;*/
 }
 
-img {
+.image-product {
     height: 430px;
     width: 430px;
 

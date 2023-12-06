@@ -103,6 +103,7 @@ body {
     font-weight: 300;
     font-size: 14px;
     color: black;
+    margin-top: 20px;
 }
 .nav_bar .row .col-12 .breadcrumb a {
     padding-left: 110px;
