@@ -1,3 +1,48 @@
+
+
+var total = 0
+document.getElementById("total").innerHTML = total;
+async function getTotal() {
+    // Lấy thông tin người dùng hiện tại
+    let currentUser = getCurrentUser();
+
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    if (currentUser) {
+        // Gửi yêu cầu GET với tham số id
+        await axios.get("http://localhost:8080/product/total", {
+            params: {
+                id: currentUser.id
+            }
+        }).then(function (response) {
+            // Lưu giá trị vào biến totalProduct
+            total = response.data;
+            document.getElementById("total").innerHTML = total;
+            // Gọi hàm để xử lý giá trị totalProduct (nếu cần)
+        }).catch(function (error) {
+            console.error("Error fetching total product:", error);
+        });
+    } else {
+        console.error("User not logged in");
+    }
+    return total
+}
+function addToCart(id) {
+    console.log(getCurrentUser())
+    let product = {
+        idUser: getCurrentUser().id,
+        idProduct: id
+    }
+    axios.post("http://localhost:8080/product/addToCart", product).then(function (res) {
+        console.log(res)
+    })
+    getTotal().then(r => {})
+}
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"))
+}
+showAll();
+getTotal().then(r => {
+})
 function showAll() {
     let html = `
     <div id="carouselExampleInterval" class="carousel_slide" data-ride="carousel"
@@ -57,11 +102,15 @@ function showAll() {
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 </div>
           
 </div>
+=======
+<div>
+            <button onclick="addToCart(1)">Đặt món</button>
+        </div>
+>>>>>>> 08c22ef7579624273a0decc6946498a5260c1d4d
     `
     document.getElementById("main").innerHTML = html;
 }
-
-showAll();
