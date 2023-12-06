@@ -113,6 +113,7 @@ function login() {
     axios.post('http://localhost:8080/login', userLogin)
         .then(function (response) {
             console.log("Đăng nhập thành công")
+            showAll()
         }).catch(function (err) {
         console.log(err)
         alert("Đăng nhập sai rồi bé ơi !")

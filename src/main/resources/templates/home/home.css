@@ -133,3 +133,14 @@ html {
 .media-body a:hover {
     color: #f59421;
 }
+
+.col-3 {
+    border: 1px solid black;
+}
+.col-9 {
+    border: 1px solid black;
+}
+.carousel_slide {
+    display: flex;
+    justify-content: center;
+}
