@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -13,8 +14,9 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date orderDate;
-    private String statusOrder;
+    private Long totalMoney;
     @ManyToOne
     private User user;
-
+    @ManyToOne
+    private StatusBuy statusBuy;
 }
