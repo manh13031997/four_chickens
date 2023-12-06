@@ -82,7 +82,7 @@ function showFormRegister() {
                                         <label>Email <span class="required">*</span></label>
                                         <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,63}$"
                                                class="form-control form-control-xs" name="email" id="email"
-                                               placeholder="Email" required="">
+                                               placeholder="Email" required="">                             
                                     </fieldset>
                                 </div>
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -135,6 +135,6 @@ function register() {
     axios.post('http://localhost:8080/register', userRegister)
         .then(function (response) {
             console.log("Đăng ký thành công")
-            showFormLogin()
+            showFormLogin();
         })
 }

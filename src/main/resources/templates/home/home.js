@@ -45,13 +45,12 @@ getTotal().then(r => {
 })
 function showAll() {
     let html = `
-    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel"
+    <div id="carouselExampleInterval" class="carousel_slide" data-ride="carousel"
      class="col-lg-3 d-lg-block d-none navigation-wrapper pr-0">
-
-    <nav class="h-100">
+     <div class="row">
+     <div class="col-3">
+     <nav class="h-100">
         <ul class="navigation list-group list-group-flush scroll">
-
-
             <li class="menu-item list-group-item">
                 <a href="#" class="menu-item__link" title="Sản phẩm sơ chế">
                     Các Loại Rau
@@ -76,7 +75,9 @@ function showAll() {
             </li>
         </ul>
     </nav>
-    <div class="carousel-inner" style="text-align: center;">
+</div>
+<div class="col-9">
+<div class="carousel-inner" style="text-align: center;">
         <div>
             <div class="carousel-item active" data-interval="10000">
                 <img class="d-block w-100"><img src="img/hoa%20qua.jpg" height="375" width="600"/>
@@ -99,13 +100,13 @@ function showAll() {
                 <span class="sr-only">Next</span>
             </button>
         </div>
-
-
     </div>
 </div>
-<div>
-            <button onclick="addToCart(1)">Đặt món</button>
-        </div>
+</div>
+          
+</div>
     `
     document.getElementById("main").innerHTML = html;
 }
+
+showAll();
