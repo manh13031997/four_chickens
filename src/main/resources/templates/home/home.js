@@ -102,15 +102,11 @@ function showAll() {
         </div>
     </div>
 </div>
-<<<<<<< HEAD
+</div>       
 </div>
-          
-</div>
-=======
 <div>
             <button onclick="addToCart(1)">Đặt món</button>
         </div>
->>>>>>> 08c22ef7579624273a0decc6946498a5260c1d4d
     `
     document.getElementById("main").innerHTML = html;
 }
