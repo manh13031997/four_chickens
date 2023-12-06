@@ -1,11 +1,5 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       .section {
-    margin-top: -16px;
-}
-.row-content {
-    height: 430px;
-}
 .btn-login {
-    background-color: #fbd947;
+    background-color: yellow;
     border-radius: 10px 10px 10px 10px;
     padding: 5px;
 }
@@ -15,7 +9,9 @@
 }
 .btn-action {
     background-color: orange;
-    border-radius: 0 10px 10px 0;
+}
+.input-group {
+    border-radius: 10px 10px 10px 10px;
 }
 .mid-header a {
     color: white;
@@ -70,10 +66,40 @@ body {
     height: auto;
     padding-bottom: 5px;
 }
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+/**, *::before, *::after {*/
+/*    box-sizing: border-box;*/
+/*}*/
+/**, *::before, *::after {*/
+/*    box-sizing: border-box;*/
+/*}*/
+.carousel-control-prev{
+    margin-left: 15rem;
+}
+.carousel-control-next{
+    margin-right: 15rem;
+}
+#carouselExampleInterval{
+    display: flex;
 
-
-
-
+}
+.carousel-inner{
+    height: 50%;
+}
+.img-fluid{
+    background-color: #28a745;
+}
+.mid-header{
+    background-color: #135a30;
+}
+/*.shop-policises{*/
+/*    gap: 200px;*/
+/*}*/
 .shop-policies{
     display: flex;
     align-items: center;
@@ -93,24 +119,28 @@ body {
 .subheader .container .icon {
     margin-left: 50px;
 }
+.media-body a {
+    display: flex;
+    justify-content: flex-start;
+    font-size: medium;
+    margin: -5px;
+}
+.header-left .media .media-body span {
+    display: flex;
+    justify-content: flex-start;
+    font-size: medium;
+}
+.media-body a:hover {
+    color: #f59421;
+}
 
-.col2{
+.col-3 {
     border: 1px solid black;
-    height: 35px;
 }
-
-.nav_bar .row .col-12 .breadcrumb span {
-    font-weight: 300;
-    font-size: 14px;
-    color: black;
-    margin-top: 20px;
+.col-9 {
+    border: 1px solid black;
 }
-.nav_bar .row .col-12 .breadcrumb a {
-    padding-left: 110px;
+.carousel_slide {
+    display: flex;
+    justify-content: center;
 }
-.nav_bar .row .col-12 .breadcrumb a:hover {
-    color: green;
-    text-decoration: none;
-}
-
-
