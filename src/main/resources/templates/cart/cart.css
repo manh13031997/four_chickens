@@ -1,0 +1,47 @@
+.cart {
+    border: 1px solid black;
+    /*width: 800px;*/
+}
+
+.cart_title {
+    border: 1px solid black;
+}
+
+.col1 {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+.col2 {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.col_delete {
+    display: flex;
+    align-items: center;
+}
+
+.col_priceAndQuantity {
+    display: flex;
+    align-items: center;
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-pay {
+    display: flex;
+    justify-content: center;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+}

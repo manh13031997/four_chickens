@@ -156,7 +156,10 @@ function showAll() {
     document.getElementById("main").innerHTML = html;
 }
 function showAllProduct() {
-    let html = `
+    axios.get('http://localhost:8080/product')
+        .then(function (response) {
+            let products = response.data
+            let html = `
 <br>
      <div id="carouselExampleInterval" class="carousel_slide" data-ride="carousel"
      class="col-lg-3 d-lg-block d-none navigation-wrapper pr-0">
@@ -212,11 +215,74 @@ function showAllProduct() {
 </div>
 </div>       
 </div>
-<div>
-            <button onclick="addToCart(1)">Đặt món</button>
+<div>`
+            for (let i = 0; i < products.length; i++) {
+                html += `
+    <div class="row">
+    <div class="col-sm-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="image_product">
+                    <img style="width: 200px; height: 200px"
+                         src="${products[i].photo}" alt="">
+                </div>
+                <div class="name_product">
+                    <b class="card-text">${products[i].name}</b>
+                </div>
+                <div class="description_product">
+                    <p class="card-text">${products[i].description}</p>
+                </div>
+                <div class="price_product">
+                    <b>${products[i].price}</b>
+                </div>
+                <div class="btn">
+                    <button class="btn-order">Đặt món</button>
+                </div>
+            </div>
         </div>
-    `
-    document.getElementById("main").innerHTML = html;
+    </div>
+    </div>
+                `
+            }
+            document.getElementById("main").innerHTML = html;
+        })
 }
 showAllProduct();
+
+// function getAllProducts() {
+//     axios.get('http://localhost:8080/product')
+//         .then(function (response) {
+//             let products = response.data
+//             let html = "";
+//             for (let i = 0; i < products.length; i++) {
+//                 html += `
+//     <div class="col-sm-2">
+//         <div class="card">
+//             <div class="card-body">
+//                 <div class="image_product">
+//                     <img style="width: 200px; height: 200px"
+//                          src="${products[i].photo}" alt="">
+//                 </div>
+//                 <div class="name_product">
+//                     <b class="card-text">${products[i].name}</b>
+//                 </div>
+//                 <div class="description_product">
+//                     <p class="card-text">${products[i].description}</p>
+//                 </div>
+//                 <div class="price_product">
+//                     <b>${products[i].price}</b>
+//                 </div>
+//                 <div class="btn">
+//                     <button class="btn-order">Đặt món</button>
+//                 </div>
+//
+//             </div>
+//         </div>
+//     </div>
+//                 `
+//             }
+//             document.getElementById("main2").innerHTML = html;
+//         })
+// }
+// getAllProducts();
 
