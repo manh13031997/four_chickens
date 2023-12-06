@@ -1,14 +1,18 @@
 function showFormCreateProduct() {
+    // axios.get('http://localhost:8080/category', {headers: {"Authorization": `Bearer ${auHeader()}`}})
     axios.get('http://localhost:8080/category')
         .then(function (response) {
+            showSubHeader()
             let categories = response.data
             let html = `
+
+<br>
     <div class="container" id="container">
-     <div class="row row1">
+     <div class="row row-create">
         <div class="col-8">
             <h5>Chọn file ảnh</h5>
             <input type="file" id="fileButton" onchange="uploadImage(event)">
-            <input type="hidden" id="image" value="">
+            <input type="hidden" id="image">
             <div id="imgDiv" class="image">
         </div>
         </div>
@@ -29,7 +33,7 @@ function showFormCreateProduct() {
             </div>
             <br>
             <label for="">Mô tả sản phẩm đi em :</label>
-            <textarea cols="34" rows="3" id="description">
+            <textarea cols="31" rows="3" id="description">
             </textarea>
             
             <select class="custom-select" id="idCategory">`
@@ -39,18 +43,7 @@ function showFormCreateProduct() {
             }
             html += `</select>
 
-<!--            <div class="input-group mb-3">-->
-<!--            <option selected>Chọn loại đi em</option>-->
-<!--            <option value="1">Rau</option>-->
-<!--            <option value="2">Củ</option>-->
-<!--            <option value="3">Quả</option>-->
-<!--            </select>-->
-<!--            <div class="input-group-append">-->
-<!--                 <label class="input-group-text" for="inputGroupSelect02">Options</label>-->
-<!--            </div>-->
-<!--            </div>-->
-            
-            <div style="width: 100%; display: flex; justify-content: center">
+            <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
             <button type="button" class="btn btn-primary" onclick="create()" >Thêm thì ấn vào</button>
             </div>  
         </div>
@@ -59,7 +52,7 @@ function showFormCreateProduct() {
     </div>
     </div>
     `
-            document.getElementById("main2").innerHTML = html;
+            document.getElementById("main").innerHTML = html;
         })
 }
 
@@ -76,19 +69,21 @@ function create() {
         quantity : quantity,
         price : price,
         description : description,
-        image : image,
-        category_id : {
+        photo : image,
+        category : {
             id : idCategory
         }
     }
-    axios.post('http://localhost:8080/admin/product/create', newProduct)
+
+
+    axios.post('http://localhost:8080/product/create', newProduct)
         .then(function (response) {
             showAll();
             alert('Thêm thành công')
         })
 }
 
-showFormCreateProduct();
+// showFormCreateProduct();
 
 
 function uploadImage(e) {
@@ -117,7 +112,7 @@ function uploadImage(e) {
             }
         }, function () {
             let downloadURL = uploadTask.snapshot.downloadURL;
-            document.getElementById('imgDiv').innerHTML = `<img src="${downloadURL}" alt="">`
+            document.getElementById('imgDiv').innerHTML = `<img id="img" class="image-product" src="${downloadURL}" alt="">`
             localStorage.setItem('image', downloadURL);
             document.getElementById("image").value = downloadURL;
         });

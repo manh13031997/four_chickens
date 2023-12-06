@@ -18,6 +18,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+
 </head>
 <body>
 
@@ -37,7 +39,7 @@
                     <div class="col-4 col-lg-2 header-right">
 
 
-                        <a href="" class="logo-wrapper ">
+                        <a onclick="showSubHeader()" class="logo-wrapper ">
                             <img class="image-fluid"
                                  src="//bizweb.dktcdn.net/100/435/899/themes/927741/assets/logo.png?1701440377226"
                                  alt="logo Rau củ quả 24h">
@@ -105,42 +107,7 @@
             </div>
         </div>
     </header>
-    <div class="subheader row">
-        <div class="container">
-            <div class="toogle-nav-wrapper">
-                <i class="fa-solid fa-bars fa-xl"></i> Danh sách sản phẩm
-            </div>
-            <ul class="shop-policises list-unstyled  d-flex align-items-center flex-wrap m-0 pr-0">
-                <li>
-                    <div class="icon">
-                        <i class="fa-solid fa-cart-shopping fa-xs"></i> Bảng giá sản phẩm
-                    </div>
-
-                </li>
-                <li>
-                    <div class="icon">
-                        <i class="fa-solid fa-star fa-xs"></i> Review sản phẩm
-                    </div>
-
-                </li>
-                <li>
-                    <div class="icon">
-                        <i class="fa-solid fa-heart fa-xs"></i> Kiểm tra khi đặt hàng
-                    </div>
-
-                </li>
-                <li>
-                    <div class="icon">
-                        <a > <i class="fa-solid fa-cart-plus fa-xs"></i> Thêm sản phẩm</a>
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-    </div>
 </nav>
-
-
 <div id="main">
 
 </div>
@@ -160,7 +127,6 @@
     };
     firebase.initializeApp(firebaseConfig);
 </script>
-
 <link rel="stylesheet" href="home/home.css">
 <script src="security/login/login.js"></script>
 <script src="home/home.js"></script>
@@ -168,8 +134,9 @@
 <link rel="stylesheet" href="security/register/register.css">
 <script src="security/login/login.js"></script>
 <script src="security/register/register.js"></script>
-<script src="createProduct/createProduct.js"></script>
 <script src="security/register/register.js"></script>
 <script src="home/home.js"></script>
+<script src="createProduct/createProduct.js"></script>
+<link rel="stylesheet" href="createProduct/createProduct.css">
 </body>
 </html>
