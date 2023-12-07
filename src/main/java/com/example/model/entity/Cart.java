@@ -14,6 +14,12 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long quantity;
-    private Long idProduct;
-    private Long idUser;
+    private String statusBuy;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "Product_Cart", joinColumns = {@JoinColumn(name = "Product_id", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "Cart_id", referencedColumnName = "id")})
+    private Set<Product> products = new HashSet<>();
+    @OneToOne
+    private User user;
 }

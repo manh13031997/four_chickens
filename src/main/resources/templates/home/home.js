@@ -216,7 +216,7 @@ function remove(id) {
         axios.delete('http://localhost:8080/admin/product/delete/', id)
             .then(function (response) {
                 showAll()
-                alert("Đã xóa thành cmn công")
+                alert("Đã xóa thành cmn công !")
             })
     }
 }
