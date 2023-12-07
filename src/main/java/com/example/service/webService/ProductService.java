@@ -1,8 +1,6 @@
 package com.example.service.webService;
 
-import com.example.model.entity.Category;
 import com.example.model.entity.Product;
-import com.example.repository.data.RepositoryCategory;
 import com.example.repository.data.RepositoryProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +36,9 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> findProductByNameContaining(String name) {
-        return repositoryProduct.findProductByNameContaining(name);
+        if (name != null) {
+            return repositoryProduct.findProductByNameContaining(name);
+        }
+        return repositoryProduct.findAll();
     }
 }

@@ -4,9 +4,11 @@ import com.example.model.entity.Category;
 import com.example.model.entity.Product;
 import com.example.service.webService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +20,6 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private ProductService productService;
-
     @GetMapping("/product")
     public ResponseEntity<List<Product>> findAll() {
         List<Product> products = productService.findAll();
@@ -28,8 +29,7 @@ public class ProductController {
             return new ResponseEntity<>(products, HttpStatus.OK);
         }
     }
-
-    @PostMapping("/admin/product/create")
+    @PostMapping("/product/create")
     public ResponseEntity<Product> create(@RequestBody Product product) {
         product = productService.save(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
