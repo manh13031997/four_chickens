@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.entity.Cart;
 import com.example.model.entity.CartRequest;
+import com.example.model.entity.Category;
 import com.example.service.webService.ICartService;
 import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,11 @@ public class CartController {
     @GetMapping("/total")
     public ResponseEntity<Integer> total(@RequestParam Long id) {
         return new ResponseEntity<>(Integer.valueOf(cartService.totalProduct(id)), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> remove(@PathVariable Long id){
+        cartService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

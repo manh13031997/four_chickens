@@ -133,20 +133,6 @@ function auHeader(data) {
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"))
 }
-// function showUsers() {
-//     axios.get("http://localhost:8080/admin/users", {headers: {"Authorization": `Bearer ${getCurrentUser().accessToken}`}})
-//         .then(function (res) {
-//             document.getElementById("main").innerHTML = `<h1>Hello ${getCurrentUser().username}</h1>
-//             <button onclick="logout()">Logout</button>`;
-//             console.log(res.data)
-//         })
-// }
-
-// function logout() {
-//     localStorage.clear();
-//     showFormLogin();
-
-
 function showSubHeader() {
     if(getCurrentUser()) {
         showAll();
