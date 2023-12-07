@@ -1,8 +1,8 @@
-function showCart() {
-    axios.get('http://localhost:8080/admin/order/')
-        .then(function (response) {
-            let cart = response.data;
-    let html =`
+async function showCart() {
+    // await axios.get('http://localhost:8080/order/')
+    //     .then(function (response) {
+    //         let cart = response.data;
+            let html = `
    <div class="cart">
     <div class="row cart_title">
         <h3><i class="fa-solid fa-cart-shopping fa-beat-fade"></i>Giỏ hàng</h3>
@@ -47,9 +47,9 @@ function showCart() {
     </div>
 </div>
     `
-        document.getElementById("main").innerHTML = html;
-})
-}
+            document.getElementById("main").innerHTML = html;
+        // })
+}   
 // showCart();
 
 function decreaseQuantity() {

@@ -2,7 +2,7 @@ function showFormCreateProduct() {
     // axios.get('http://localhost:8080/category', {headers: {"Authorization": `Bearer ${auHeader()}`}})
     axios.get('http://localhost:8080/category')
         .then(function (response) {
-            showSubHeader()
+            // showSubHeader()
             let categories = response.data
             let html = `
 
