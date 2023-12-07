@@ -5,6 +5,7 @@ import com.example.model.User;
 import com.example.service.RoleService;
 import com.example.service.UserService;
 import com.example.service.impl.JwtService;
+import net.sf.jsqlparser.util.validation.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

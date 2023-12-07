@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -19,10 +22,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
+
 </head>
 <body>
 
-<nav>
+<nav class="nav_bar">
     <header class="header_menu">
         <div class="mid-header wid_100 d-flex align-items-center">
             <div class="container px-md-0">
@@ -36,10 +40,8 @@
                         </div>
                     </div>
                     <div class="col-4 col-lg-2 header-right">
-
-
                         <a onclick="showSubHeader()" class="logo-wrapper ">
-                            <img class="image-fluid"
+                            <img onclick="checkLogin()" class="image-fluid"
                                  src="//bizweb.dktcdn.net/100/435/899/themes/927741/assets/logo.png?1701440377226"
                                  alt="logo Rau củ quả 24h">
                         </a>
@@ -78,24 +80,29 @@
                                 </div>
                             </li>
                             <li class="ml-4 mr-4 mr-md-3 ml-md-3 media d-lg-flex d-none ">
-
-                                <i class="fas fa-user-circle mr-3 align-self-center" style="color: white"></i>
+                                <i class="fas fa-user-circle mr-3 align-self-center" style="color: white; padding-right: -10px"></i>
                                 <div class="media-body d-md-flex flex-column d-none ">
-                                    <a class="btn" title="Tài khoản" class="li-block">
-                                        Tài khoản
-                                    </a>
-                                    <small>
-                                        <a onclick="showFormLogin()" class="btn" title="Đăng nhập" class="font-weight">
-                                            Đăng nhập
-                                        </a>
-                                    </small>
+                                    <div id="loginSuccess" class="loginSuccess">
+                                        <div id="not_logged_in_yet">
+                                            <a class="btn" title="Tài khoản" class="li-block">
+                                                Tài khoản
+                                            </a>
+                                            <small>
+                                                <a onclick="showFormLogin()" class="btn" title="Đăng nhập" class="font-weight">
+                                                    Đăng nhập
+                                                </a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div id="logout">
+                                    </div>
                                 </div>
                             </li>
                             <li class="ml-0 mr-2 mr-md-0">
                                 <div class="mini-cart text-xs-center">
-                                    <a class="img_hover_cart" href="http://localhost:63342/store_manager/src/main/resources/templates/index.html?" title="Giỏ hàng">
-                                        <i class="fas fa-shopping-bag" ></i>
-                                        <span class="mx-2 d-md-block d-none"  >Giỏ hàng</span>
+                                    <a onclick="showCart()" class="img_hover_cart" title="Giỏ hàng">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        <span class="mx-2 d-md-block d-none">Giỏ hàng</span>
                                         <span class="count_item count_item_pr" id="total"></span>
                                     </a>
                                 </div>
@@ -114,6 +121,8 @@
 <div class="row" id="main2">
 
 </div>
+
+
 
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <script>
@@ -141,7 +150,6 @@
 <script src="home/home.js"></script>
 <script src="createProduct/createProduct.js"></script>
 <link rel="stylesheet" href="createProduct/createProduct.css">
-
 <script src="cart/cart.js"></script>
 <link rel="stylesheet" href="cart/cart.css">
 </body>

@@ -5,7 +5,7 @@ function showFormLogin() {
         <div class="col-12">
             <ul class="breadcrumb">
                 <li>
-                    <a class="btn" onclick="showSubHeader()"><span>Trang chủ</span></a>
+                    <a onclick="showAllProduct()" ><span>Trang chủ</span></a>
                     <span>&nbsp;/&nbsp;</span>
                 </li>
                 <li><strong><span><b>Đăng nhập tài khoản</b></span></strong></li>
@@ -39,13 +39,7 @@ function showFormLogin() {
                                             <label>Mật khẩu <span class="required">:</span> </label>
                                             <input type="password" class="form-control "
                                                    id="password" placeholder="Mật khẩu">
-                                            <small class="d-block my-2">
-                                            Quên mật khẩu? Nhấn vào
-                                            <a href="#"
-                                            class="btn-link-style text-primary"
-                                            onclick="showRecoverPasswordForm();return false;">
-                                            đây </a>
-                                            </small>
+                                           
                                         </fieldset>
 
                                         <div class="pull-xs-left button_bottom a-center  mb-3">
@@ -57,36 +51,7 @@ function showFormLogin() {
                                 </div>
                             </div>
 
-                            <div id="recover-password" style="display:none;" class="form-signup page-login text-center">
-                                <h2>
-                                    Đặt lại mật khẩu
-                                </h2>
-                                <p>
-                                    Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.
-                                </p>
-                                <form method="post" action="/account/recover" id="recover_customer_password"
-                                      accept-charset="UTF-8"><input name="FormType" type="hidden"
-                                                                    value="recover_customer_password"><input name="utf8"
-                                                                                                             type="hidden"
-                                                                                                             value="true">
-                                    <div class="form-signup" style="color: red;">
-
-                                    </div>
-                                    <div class="form-signup clearfix">
-                                        <fieldset class="form-group">
-                                            <input type="text"
-                                                   class="form-control form-control-lg" value="" name="username"
-                                                   id="recover-username" placeholder="Tên đăng nhập" required="">
-                                        </fieldset>
-                                    </div>
-                                    <div class="action_bottom my-3">
-                                        <input class="btn btn-style btn-recover btn-block" type="submit"
-                                               value="Lấy lại mật khẩu">
-                                        <a href="#" class="btn btn-style link btn-style-active "
-                                           onclick="hideRecoverPasswordForm();return false;">Quay lại</a>
-                                    </div>
-                                </form>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -115,7 +80,16 @@ function login() {
                 localStorage.setItem('user', JSON.stringify(response.data))
             }
             console.log("Đăng nhập thành công")
-            showAll()
+            let html1=`
+            ${getCurrentUser().username}
+            `
+            let html2 = `
+            <button class="logout" onclick="logout()">Logout</button>
+            `
+            document.getElementById("logout").innerHTML = html2;
+            document.getElementById("loginSuccess").innerHTML = html1;
+            getTotal()
+            showAll();
         }).catch(function (err) {
         console.log(err)
         alert("Đăng nhập sai rồi bé ơi !")
@@ -133,6 +107,36 @@ function auHeader(data) {
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"))
 }
+// function showUsers() {
+//     axios.get("http://localhost:8080/admin/users", {headers: {"Authorization": `Bearer ${getCurrentUser().accessToken}`}})
+//         .then(function (res) {
+//             document.getElementById("loginSuccess").innerHTML = `<h1>Hello ${getCurrentUser().username}</h1>
+//             <button onclick="logout()">Logout</button>`;
+//
+//         })
+// }
+
+function logout() {
+    localStorage.clear();
+    let html1 = `
+    <div id="not_logged_in_yet">
+        <a class="btn" title="Tài khoản" class="li-block">Tài khoản
+        </a>
+        <small>
+            <a onclick="showFormLogin()" class="btn" title="Đăng nhập" class="font-weight">
+           Đăng nhập
+             </a>
+       </small>
+      </div>
+    `
+    let html2 = null;
+
+    document.getElementById("logout").innerHTML = html2;
+    document.getElementById("loginSuccess").innerHTML = html1;
+    var total = 0
+    document.getElementById("total").innerHTML = total;
+    showAllProduct();
+}
 function showSubHeader() {
     if(getCurrentUser()) {
         showAll();
@@ -143,8 +147,25 @@ function showSubHeader() {
 
 showSubHeader()
 
-if(getCurrentUser()){
-    showUsers();
-} else {
-    showFormLogin()
+function checkLogin() {
+    if(getCurrentUser()){
+        showAll();
+    } else {
+        showAllProduct();
+    }
+}
+checkLogin();
+
+
+if(getCurrentUser()) {
+    let html1=`
+            ${getCurrentUser().username}
+            `
+    let html2 = `
+            <button class="logout" onclick="logout()">Logout</button>
+            `
+    document.getElementById("logout").innerHTML = html2;
+    document.getElementById("loginSuccess").innerHTML = html1;
+}else {
+    showAllProduct();
 }

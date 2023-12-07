@@ -26,6 +26,89 @@ span {
     color: white;
 }
 
+.btn_register {
+    background-color: yellow;
+    border-radius: 10px 10px 10px 10px;
+    padding: 7px;
+}
+
+.section {
+    margin-top: -16px;
+}
+.row-content {
+    height: 430px;
+}
+.btn-login {
+    background-color: #fbd947;
+    border-radius: 10px 10px 10px 10px;
+    padding: 5px;
+}
+
+.mid-header {
+    background-color: #135a30;
+}
+.btn-action {
+    background-color: orange;
+    border-radius: 0 10px 10px 0;
+}
+.mid-header a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+span {
+    color: white;
+}
+
+.mini-cart>a {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 2px solid white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.img_hover_cart span:hover {
+    text-decoration: none;
+}
+
+.mini-cart .btn:hover {
+    background-color: cadetblue;
+    border: 2px solid white;
+}
+.img_hover_cart:hover {
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+}
+.count_item {
+    background-color: #f59421;
+    padding: 3px;
+    border-radius: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+}
+.font-weight-bold:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.li-block:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.font-weight:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.image-fluid {
+    max-width: 70%;
+    height: auto;
+    padding-bottom: 5px;
+}
+
 .mini-cart>a {
     display: flex;
     align-items: center;
@@ -103,7 +186,7 @@ body {
     font-weight: 300;
     font-size: 14px;
     color: black;
-    margin-top: 20px;
+
 }
 .nav_bar .row .col-12 .breadcrumb a {
     padding-left: 110px;
