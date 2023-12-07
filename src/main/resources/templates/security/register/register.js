@@ -116,7 +116,17 @@ function register() {
     }
     axios.post('http://localhost:8080/register', userRegister)
         .then(function (response) {
-            console.log("Đăng ký thành công")
-            showFormLogin();
+            axios.get('http://localhost:8080/users')
+                .then(function (rep) {
+                    let users = rep.data
+                    for (let i = 0; i < users.length; i++) {
+                        if(users[i].username === username){
+                            alert('Tên đăng nhập của bạn đã tồn tại')
+                        }else {
+                            console.log("Đăng ký thành công")
+                            showFormLogin();
+                        }
+                    }
+                })
         })
 }

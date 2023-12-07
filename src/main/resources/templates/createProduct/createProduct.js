@@ -79,11 +79,11 @@ function create() {
     axios.post('http://localhost:8080/product/create', newProduct)
         .then(function (response) {
             showAll();
-            alert('Thêm thành công')
+            alert("Thêm sản phẩm mới thành công !!")
         })
 }
 
-// showFormCreateProduct();
+
 
 
 function uploadImage(e) {

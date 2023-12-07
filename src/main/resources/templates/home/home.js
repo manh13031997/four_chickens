@@ -1,5 +1,3 @@
-
-
 var total = 0
 document.getElementById("total").innerHTML = total;
 async function getTotal() {
@@ -22,20 +20,25 @@ async function getTotal() {
             console.error("Error fetching total product:", error);
         });
     } else {
-        console.error("User not logged in");
+        console.log("Bạn cần đăng nhập để đặt món !!");
     }
-    return total
+    return total;
 }
 function addToCart(id) {
-    console.log(getCurrentUser())
-    let product = {
-        idUser: getCurrentUser().id,
-        idProduct: id
+    if(getCurrentUser()){
+        console.log(getCurrentUser())
+        let product = {
+            idUser: getCurrentUser().id,
+            idProduct: id
+        }
+        axios.post("http://localhost:8080/product/addToCart", product).then(function (res) {
+            console.log(res)
+        })
+        getTotal().then(r => {})
+    }else {
+        alert("Bạn cần đăng nhập để đặt món !!")
     }
-    axios.post("http://localhost:8080/product/addToCart", product).then(function (res) {
-        console.log(res)
-    })
-    getTotal().then(r => {})
+
 }
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"))
@@ -45,7 +48,10 @@ getTotal().then(r => {
 })
 
 function showAll() {
-    let html = `
+    axios.get('http://localhost:8080/product')
+        .then(function (response) {
+            let products = response.data
+            let html = `
      <div id="subheader" class="subheader row">
         <div class="container">
             <div class="toogle-nav-wrapper">
@@ -149,11 +155,47 @@ function showAll() {
 </div>
 </div>       
 </div>
-<div>
-            <button onclick="addToCart(1)">Đặt món</button>
-        </div>
-    `
-    document.getElementById("main").innerHTML = html;
+<!--<div>-->
+<!--            <button onclick="addToCart(1)">Đặt món</button>-->
+<!--        </div>-->
+        
+    <div class="title_module_main heading-bar d-flex justify-content-between align-items-center">
+<h2 class="heading-bar__title ">
+<a>Danh sách các sản phẩm</a>
+</h2>
+</div>
+<br>
+<div class="row">
+`
+            for (let i = 0; i < products.length; i++) {
+                html += `
+     <div class="col-sm-2">
+       <div class="card">
+            <div class="card-body">
+                 <div class="image_product">
+                    <img style="width: 200px; height: 200px"
+                          src="${products[i].photo}" alt="">
+                 </div>
+                 <div class="name_product">
+                     <b class="card-text">${products[i].name}</b>
+                 </div>
+                 <div class="description_product">
+                     <p class="card-text">${products[i].description}</p>
+                 </div>
+                 <div class="price_product">
+                     <b>${products[i].price}</b>
+                </div>
+                 <div class="btn">
+                     <button class="btn-order" onclick="addToCart()">Đặt món</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+                `
+            }
+            html += `</div> `
+            document.getElementById("main").innerHTML = html;
+        })
 }
 function showAllProduct() {
     axios.get('http://localhost:8080/product')
@@ -215,74 +257,46 @@ function showAllProduct() {
 </div>
 </div>       
 </div>
-<div>`
+
+<div class="title_module_main heading-bar d-flex justify-content-between align-items-center">
+<h2 class="heading-bar__title ">
+<a>Danh sách các sản phẩm</a>
+</h2>
+</div>
+<br>
+<div class="row">
+`
             for (let i = 0; i < products.length; i++) {
                 html += `
-    <div class="row">
-    <div class="col-sm-2">
-        <div class="card">
+     <div class="col-sm-2">
+       <div class="card">
             <div class="card-body">
-                <div class="image_product">
+                 <div class="image_product">
                     <img style="width: 200px; height: 200px"
-                         src="${products[i].photo}" alt="">
+                          src="${products[i].photo}" alt="">
+                 </div>
+                 <div class="name_product">
+                     <b class="card-text">${products[i].name}</b>
+                 </div>
+                 <div class="description_product">
+                     <p class="card-text">${products[i].description}</p>
+                 </div>
+                 <div class="price_product">
+                     <b>${products[i].price}</b>
                 </div>
-                <div class="name_product">
-                    <b class="card-text">${products[i].name}</b>
-                </div>
-                <div class="description_product">
-                    <p class="card-text">${products[i].description}</p>
-                </div>
-                <div class="price_product">
-                    <b>${products[i].price}</b>
-                </div>
-                <div class="btn">
-                    <button class="btn-order">Đặt món</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                 <div class="btn">
+                     <button class="btn-order" onclick="addToCart()">Đặt món</button>
+                 </div>
+             </div>
+         </div>
+     </div>
                 `
             }
+        html += `</div> `
             document.getElementById("main").innerHTML = html;
         })
 }
 showAllProduct();
 
-// function getAllProducts() {
-//     axios.get('http://localhost:8080/product')
-//         .then(function (response) {
-//             let products = response.data
-//             let html = "";
-//             for (let i = 0; i < products.length; i++) {
-//                 html += `
-//     <div class="col-sm-2">
-//         <div class="card">
-//             <div class="card-body">
-//                 <div class="image_product">
-//                     <img style="width: 200px; height: 200px"
-//                          src="${products[i].photo}" alt="">
-//                 </div>
-//                 <div class="name_product">
-//                     <b class="card-text">${products[i].name}</b>
-//                 </div>
-//                 <div class="description_product">
-//                     <p class="card-text">${products[i].description}</p>
-//                 </div>
-//                 <div class="price_product">
-//                     <b>${products[i].price}</b>
-//                 </div>
-//                 <div class="btn">
-//                     <button class="btn-order">Đặt món</button>
-//                 </div>
-//
-//             </div>
-//         </div>
-//     </div>
-//                 `
-//             }
-//             document.getElementById("main2").innerHTML = html;
-//         })
-// }
-// getAllProducts();
+
 
