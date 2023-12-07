@@ -99,6 +99,17 @@ public class OrderController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping("cart/{ordId}")
+    public ResponseEntity<?> updateCart(@PathVariable Long ordId,@RequestBody OrderDetail orderDetail){
+        OrderDetail orderDetailOld = orderDetailService.findById(ordId).get();
+        orderDetailOld.setQuantity(orderDetail.getQuantity());
+        orderDetailOld.setPrice(orderDetailOld.getProduct().getPrice());
+        orderDetailOld.setTotalMoney(orderDetailOld.getQuantity()*orderDetailOld.getPrice());
+        orderDetailService.save(orderDetailOld);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+        //thanh toán giỏ hàng.
     @GetMapping("/payment/{userId}")
     public ResponseEntity<?> payment(@PathVariable Long userId) {
         Long totalMoneyOrder = 0L;
@@ -110,6 +121,9 @@ public class OrderController {
         return new ResponseEntity<>(totalMoneyOrder,HttpStatus.OK);
     }
 
-
-
+    @DeleteMapping("/cart/{ordId}")
+    public ResponseEntity<?> remove(@PathVariable Long ordId){
+        orderDetailService.delete(ordId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
