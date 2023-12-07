@@ -98,8 +98,8 @@ function login() {
 
 function auHeader(data) {
     let user = JSON.parse(localStorage.getItem('user'))
-    if (user && user.acessToken) {
-        return {Authorization: 'Bearer' + user.acessToken, data: data}
+    if (user && user.accessToken) {
+        return {Authorization: 'Bearer' + user.accessToken, data: data}
     } else {
         return ''
     }
@@ -137,6 +137,16 @@ function logout() {
     document.getElementById("total").innerHTML = total;
     showAllProduct();
 }
+// function showSubHeader() {
+//     for (let i = 0; i < getCurrentUser().roles.length; i++) {
+//         if(getCurrentUser().roles[i].authority === "ROLE_ADMIN") {
+//             showAll();
+//         }else {
+//             showAllProduct();
+//         }
+//     }
+// }
+
 function showSubHeader() {
     if(getCurrentUser()) {
         showAll();

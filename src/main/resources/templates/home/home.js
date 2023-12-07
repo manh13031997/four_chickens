@@ -1,5 +1,6 @@
 var total = 0
 document.getElementById("total").innerHTML = total;
+
 async function getTotal() {
     // Lấy thông tin người dùng hiện tại
     let currentUser = getCurrentUser();
@@ -24,8 +25,9 @@ async function getTotal() {
     }
     return total;
 }
+
 function addToCart(id) {
-    if(getCurrentUser()){
+    if (getCurrentUser()) {
         console.log(getCurrentUser())
         let product = {
             idUser: getCurrentUser().id,
@@ -34,12 +36,14 @@ function addToCart(id) {
         axios.post("http://localhost:8080/product/addToCart", product).then(function (res) {
             console.log(res)
         })
-        getTotal().then(r => {})
-    }else {
+        getTotal().then(r => {
+        })
+    } else {
         alert("Bạn cần đăng nhập để đặt món !!")
     }
 
 }
+
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"))
 }
@@ -51,6 +55,7 @@ function showAll() {
     axios.get('http://localhost:8080/product')
         .then(function (response) {
             let products = response.data
+            let role=checkRole();
             let html = `
      <div id="subheader" class="subheader row">
         <div class="container">
@@ -80,18 +85,18 @@ function showAll() {
                     <div class="icon">
                         <a id="addProduct" class="btn" onclick="showFormCreateProduct()"><i class="fa-solid fa-cart-plus fa-xs"></i> Thêm sản phẩm</a>
                     </div>
-                    <script>
-                        let userRole = getCurrentUser().roles;
-                        function checkAccessAndToggleButton() {
-                            const addToCartButton = document.getElementById('addProduct');
-                            if (userRole === 'ROLE_ADMIN') {
-                                addToCartButton.style.display = 'block';
-                            } else {
-                                addToCartButton.style.display = 'none';
-                            }
-                        }
-                        checkAccessAndToggleButton()
-                    </script>
+<!--                    <script>-->
+<!--                        let userRole = getCurrentUser().roles;-->
+<!--                        function checkAccessAndToggleButton() {-->
+<!--                            const addToCartButton = document.getElementById('addProduct');-->
+<!--                            if (userRole === 'ROLE_ADMIN') {-->
+<!--                                addToCartButton.style.display = 'block';-->
+<!--                            } else {-->
+<!--                                addToCartButton.style.display = 'none';-->
+<!--                            }-->
+<!--                        }-->
+<!--                        checkAccessAndToggleButton()-->
+<!--                    </script>-->
                 </li>
             </ul>
         </div>
@@ -188,6 +193,13 @@ function showAll() {
                  <div class="btn">
                      <button class="btn-order" onclick="addToCart()">Đặt món</button>
                  </div>
+                  <div class="edit_product">`;
+                  if(role===1){
+                      html+=`<button class="edit" onclick="showFormUpdateProduct(${products[i].id})">Sửa</button>
+                             <button class="delete" onclick="remove(${products[i].id})">Xóa</button>
+                             `;
+                  }
+                html+=`</div>
              </div>
          </div>
      </div>
@@ -197,6 +209,30 @@ function showAll() {
             document.getElementById("main").innerHTML = html;
         })
 }
+
+function remove(id) {
+    let check = confirm("Mày chắc chưa?")
+    if(check){
+        axios.delete('http://localhost:8080/admin/product/delete/', id)
+            .then(function (response) {
+                showAll()
+                alert("Đã xóa thành cmn công")
+            })
+    }
+}
+
+function checkRole() {
+    let role = 0;
+    for (let i = 0; i < getCurrentUser().roles.length; i++) {
+        console.log(getCurrentUser().roles[i].authority)
+        if (getCurrentUser().roles[i].authority === "ROLE_ADMIN") {
+            role=1;
+            break;
+        }
+    }
+    return role;
+}
+
 function showAllProduct() {
     axios.get('http://localhost:8080/product')
         .then(function (response) {
@@ -292,11 +328,12 @@ function showAllProduct() {
      </div>
                 `
             }
-        html += `</div> `
+            html += `</div> `
             document.getElementById("main").innerHTML = html;
         })
 }
-showAllProduct();
+
+
 
 
 
