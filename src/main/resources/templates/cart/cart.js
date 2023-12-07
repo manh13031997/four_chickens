@@ -1,7 +1,4 @@
 async function showCart() {
-    // await axios.get('http://localhost:8080/order/')
-    //     .then(function (response) {
-    //         let cart = response.data;
             let html = `
    <div class="cart">
     <div class="row cart_title">
@@ -44,11 +41,47 @@ async function showCart() {
                 <a class="btn" onclick="checkLoggedIn()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
             </div>
         </div>
+        
+        <div>
+        <table id="myTable">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <!-- Table body will be populated dynamically -->
+    </tbody>
+</table>
+</div>
     </div>
 </div>
     `
             document.getElementById("main").innerHTML = html;
-        // })
+    var tableBody = document.getElementById("tableBody");
+
+    // Loop through each item in arrCart
+    if (this.arrCart && this.arrCart.length > 0) {
+        // Loop through each item in arrCart
+        for (var i = 0; i < this.arrCart.length; i++) {
+            // Create a new row
+            var newRow = tableBody.insertRow(tableBody.rows.length);
+
+            var cellID = newRow.insertCell(0);
+            var cellIDProduct = newRow.insertCell(1);
+
+            cellID.innerHTML = this.arrCart[i].id;
+            cellIDProduct.innerHTML = `<button onclick="deleteForm('${this.arrCart[i].id}')">Xoá</button>`;
+
+        }
+    } else {
+        // Hiển thị thông báo khi giỏ hàng trống
+        var emptyCartRow = tableBody.insertRow(0);
+        var emptyCartCell = emptyCartRow.insertCell(0);
+        emptyCartCell.colSpan = 2; // Chỉnh lại số cột cho cell này
+        emptyCartCell.innerHTML = "<b>Giỏ hàng trống.</b>";
+    }
 }   
 // showCart();
 function checkLoggedIn() {
@@ -67,7 +100,7 @@ function decreaseQuantity() {
         quantityInput.value = currentQuantity - 1;
     }
 }
-
+const arrCart = null
 // Hàm tăng số lượng
 function increaseQuantity() {
     var quantityInput = document.getElementById('quantityInput');
@@ -75,14 +108,21 @@ function increaseQuantity() {
 
     quantityInput.value = currentQuantity + 1;
 }
-
-function deleteForm(id) {
-    axios.delete(`http://localhost:8080/product/cart/` +id )
+function getCardByIdUser () {
+    axios.get(`http://localhost:8080/product/getById/${getCurrentUser().id}`)
         .then((res) => {
-            console.log('Sản phẩm đã được xóa:', res.data);
-            showCart();
+            this.arrCart = res.data
+            console.log(this.arrCart)
+        })
+}
+async function deleteForm(id) {
+    await axios.delete(`http://localhost:8080/product/${id}`)
+        .then((res) => {
         })
         .catch((error) => {
-            console.error('Lỗi khi xóa:', error);
         });
+    await showCart()
+    // window.location.reload()
+
 }
+getCardByIdUser()

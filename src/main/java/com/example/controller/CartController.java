@@ -18,7 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RequestMapping("/product")
 public class CartController {
     @Autowired
@@ -41,9 +41,14 @@ public class CartController {
         return new ResponseEntity<>(Integer.valueOf(cartService.totalProduct(id)), HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> remove(@PathVariable Long id){
         cartService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getById/{id}")
+    public List<Cart> getByIdUser(@PathVariable Long id) {
+        return cartService.getByIdUser(id);
     }
 }

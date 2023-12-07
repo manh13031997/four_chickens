@@ -18,6 +18,11 @@ public class CartService implements ICartService{
     }
 
     @Override
+    public List<Cart> getByIdUser(Long idUser) {
+        return repositoryCart.getByIdUser(idUser);
+    }
+
+    @Override
     public List<Cart> findAll() {
         return repositoryCart.findAll();
     }
