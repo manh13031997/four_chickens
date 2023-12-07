@@ -263,3 +263,20 @@ html {
     display: flex;;
     justify-content: center;
 }
+.icon_homePage:hover {
+    color: blue;
+}
+.icon_create {
+    margin-top: -1px;
+    margin-right: 3px;
+    margin-left: 170px;
+}
+.icon_create:hover {
+    color: #28a745;
+}
+.icon_intro {
+    margin-left: 130px;
+}
+.icon_intro:hover{
+    color: darkorange;
+}

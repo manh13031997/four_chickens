@@ -68,9 +68,6 @@ function showAll() {
     axios.get('http://localhost:8080/product')
         .then(function (response) {
             let products = response.data;
-            axios.get('http://localhost:8080/category')
-                .then(function (response) {
-                    let categories = response.data
                     let role = checkRole();
                     let html = `
      <div id="subheader" class="subheader row">
@@ -80,39 +77,40 @@ function showAll() {
             </div>
             <ul class="shop-policises list-unstyled  d-flex align-items-center flex-wrap m-0 pr-0">
                 <li>
-                    <div class="icon">
-                        <i class="fa-solid fa-cart-shopping fa-xs"></i> Bảng giá sản phẩm
+                    <div class="icon_homePage" onclick="showAll()">
+                        <i class="fa-solid fa-house"></i> Trang chủ
                     </div>
 
                 </li>
                 <li>
                     <div class="icon">
-                        <i class="fa-solid fa-star fa-xs"></i> Review sản phẩm
+                    <div class="icon_intro">
+                   <i class="fa-solid fa-star "></i> Giới thiệu 
+                    </div>
                     </div>
 
                 </li>
+<!--                <li>-->
+<!--                    <div class="icon">-->
+<!--                        <i class="fa-solid fa-heart fa-xs"></i> Kiểm tra khi đặt hàng-->
+<!--                    </div>-->
+
+<!--                </li>-->
                 <li>
-                    <div class="icon">
-                        <i class="fa-solid fa-heart fa-xs"></i> Kiểm tra khi đặt hàng
+                    <div class="icon_cart">`
+                     if (role === 1) {
+                            html += `
+                             <a id="addProduct" class="btn" onclick="showFormCreateProduct()">
+                             <div class="icon_create"><i class="fa-solid fa-cart-plus"></i>
+                              Thêm sản phẩm</div></a>
+                             `;
+                        }else {
+                         html +=``
+                     }
+                    html += `</div>
+
                     </div>
 
-                </li>
-                <li>
-                    <div class="icon">
-                        <a id="addProduct" class="btn" onclick="showFormCreateProduct()"><i class="fa-solid fa-cart-plus fa-xs"></i> Thêm sản phẩm</a>
-                    </div>
-<!--                    <script>-->
-<!--                        let userRole = getCurrentUser().roles;-->
-<!--                        function checkAccessAndToggleButton() {-->
-<!--                            const addToCartButton = document.getElementById('addProduct');-->
-<!--                            if (userRole === 'ROLE_ADMIN') {-->
-<!--                                addToCartButton.style.display = 'block';-->
-<!--                            } else {-->
-<!--                                addToCartButton.style.display = 'none';-->
-<!--                            }-->
-<!--                        }-->
-<!--                        checkAccessAndToggleButton()-->
-<!--                    </script>-->
                 </li>
             </ul>
         </div>
@@ -218,7 +216,7 @@ function showAll() {
                              `;
                         }
                         html += `</div>
-             </div>
+              </div>
          </div>
      </div>
                 `
@@ -226,7 +224,6 @@ function showAll() {
                     html += `</div> `
                     document.getElementById("main").innerHTML = html;
                 })
-        })
 }
 
 function remove(id) {
