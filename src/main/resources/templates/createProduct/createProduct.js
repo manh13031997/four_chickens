@@ -2,7 +2,6 @@ function showFormCreateProduct() {
     // axios.get('http://localhost:8080/category', {headers: {"Authorization": `Bearer ${auHeader()}`}})
     axios.get('http://localhost:8080/category')
         .then(function (response) {
-            showSubHeader()
             let categories = response.data
             let html = `
 
@@ -45,6 +44,7 @@ function showFormCreateProduct() {
 
             <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
             <button type="button" class="btn btn-primary" onclick="create()" >Thêm thì ấn vào</button>
+            <button type="button" class="btn btn-secondary" onclick="showAll()" >Quay lại</button>
             </div>  
         </div>
     </div>
@@ -74,9 +74,7 @@ function create() {
             id : idCategory
         }
     }
-
-
-    axios.post('http://localhost:8080/product/create', newProduct)
+    axios.post('http://localhost:8080/admin/product/create', {headers: {"Authorization": `Bearer ${auHeader()}`}},newProduct)
         .then(function (response) {
             showAll();
             alert("Thêm sản phẩm mới thành công !!")

@@ -38,7 +38,7 @@ function showCart() {
                 <button class="pay">Tiến hành thanh toán</button>
             </div>
             <div class="back">
-                <a class="btn" onclick="showAllProduct()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
+                <a class="btn" onclick="checkLoggedIn()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
             </div>
         </div>
     </div>
@@ -47,6 +47,13 @@ function showCart() {
         document.getElementById("main").innerHTML = html;
 }
 // showCart();
+function checkLoggedIn() {
+    if(getCurrentUser()){
+        showAll()
+    }else {
+        showAllProduct()
+    }
+}
 
 function decreaseQuantity() {
     var quantityInput = document.getElementById('quantityInput');

@@ -114,19 +114,14 @@ function register() {
         password: password,
         confirmPassword : password
     }
+
+    console.log(userRegister)
     axios.post('http://localhost:8080/register', userRegister)
         .then(function (response) {
-            axios.get('http://localhost:8080/users')
-                .then(function (rep) {
-                    let users = rep.data
-                    for (let i = 0; i < users.length; i++) {
-                        if(users[i].username === username){
-                            alert('Tên đăng nhập của bạn đã tồn tại')
-                        }else {
-                            console.log("Đăng ký thành công")
-                            showFormLogin();
-                        }
-                    }
-                })
-        })
+                alert("Đăng ký thành công !")
+                console.log("Đăng ký thành công")
+                showFormLogin();
+        }).catch(function (error) {
+        alert("Tên đăng nhập này đã tồn tại !!")
+    })
 }

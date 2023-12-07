@@ -236,3 +236,22 @@ html {
 .logout:hover {
     background-color: #f59421;
 }
+
+.edit_product {
+    display: flex;
+    justify-content: center;
+}
+.edit {
+    border-radius: 10px 10px 10px 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.edit:hover{
+    background-color: #f59421;
+}
+.delete {
+    border-radius: 10px 10px 10px 10px;
+}
+.delete:hover{
+    background-color: #f59421;
+}
