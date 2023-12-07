@@ -255,3 +255,11 @@ html {
 .delete:hover{
     background-color: #f59421;
 }
+.quantity_product {
+    display: flex;;
+    justify-content: center;
+}
+.category_product {
+    display: flex;;
+    justify-content: center;
+}

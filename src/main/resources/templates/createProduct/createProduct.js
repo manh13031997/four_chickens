@@ -74,7 +74,7 @@ function create() {
             id : idCategory
         }
     }
-    axios.post('http://localhost:8080/admin/product/create', {headers: {"Authorization": `Bearer ${auHeader()}`}},newProduct)
+    axios.post('http://localhost:8080/admin/product/create', newProduct,{headers: {"Authorization": `Bearer ${auHeader()}`}})
         .then(function (response) {
             showAll();
             alert("Thêm sản phẩm mới thành công !!")

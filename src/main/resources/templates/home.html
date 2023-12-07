@@ -48,13 +48,13 @@
 
                     </div>
                     <div class="col-xl-5 col-lg-4 col-12 header-center" id="search-header">
-                        <form action="/search" method="get" class="input-group search-bar custom-input-group "
+                        <form method="get" class="input-group search-bar custom-input-group "
                               role="search">
-                            <input type="text" name="query" value="" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+                            <input type="text" id="1" name="query" value="" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
                                    class="input-group-field auto-search form-control " required="">
                             <input type="hidden" name="type" value="product">
                             <span class="input-group-btn btn-action">
-							<button type="submit" class="btn text-white icon-fallback-text h-100">
+							<button onclick="search()" type="submit" class="btn text-white icon-fallback-text h-100">
 								<span class="fa fa-search"> </span>
 							</button>
 						</span>
@@ -121,57 +121,6 @@
 <div class="row" id="main2">
 
 </div>
-
-<script>
-//     function showCart() {
-//         let html =`
-//    <div class="cart">
-//     <div class="row cart_title">
-//         <h3><i class="fa-solid fa-cart-shopping fa-beat-fade"></i>Giỏ hàng</h3>
-//     </div>
-//     <div class="row row_into">
-//         <div class="col-9 col1">
-//             <div class="col-1 col_delete">
-//                 <div class="delete">
-//                     <b>Xóa</b>
-//                 </div>
-//             </div>
-//             <div class="col-8">
-//                 <div class="img_product">
-//                     <img style="height: 150px; width: 150px"
-//                          src="https://i.pinimg.com/236x/77/b5/be/77b5be6a080ccc382f14dbf2ec792df6.jpg" alt="">
-//                     <b>Combo family 89k_002</b>
-//                 </div>
-//
-//             </div>
-//             <div class="col-3 col_priceAndQuantity">
-//                 <div class="priceAndQuantity">
-//                     <b>Giá tiền tương ứng</b>
-//                     <div class="quantity">
-//                         <button class="minus" onclick="decreaseQuantity()">-</button>
-//                         <input type="text" id="quantityInput" value="1">
-//                         <button class="plus" onclick="increaseQuantity()">+</button>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//         <div class="col-3 col2">
-//             <div class="row total">
-//                 <b>Tổng tiền:  ... </b>
-//             </div>
-//             <div class="btn-pay">
-//                 <button class="pay">Tiến hành thanh toán</button>
-//             </div>
-//             <div class="back">
-//                 <a class="btn" onclick="showProducts()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-//     `
-//         document.getElementById("main").innerHTML = html;
-//     }
-</script>
 
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <script>

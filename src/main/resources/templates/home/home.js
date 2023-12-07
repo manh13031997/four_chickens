@@ -50,13 +50,29 @@ function getCurrentUser() {
 
 getTotal().then(r => {
 })
+function search() {
+    let search = document.getElementById("1").value;
+    console.log(search)
+    axios.get('http://localhost:8080/product/search?name' + search)
+        .then(function (rep) {
+            let listSearch = rep.data;
+            let html = `
+            
+            `
+            // console.log(listSearch);
+
+        })
+}
 
 function showAll() {
     axios.get('http://localhost:8080/product')
         .then(function (response) {
-            let products = response.data
-            let role=checkRole();
-            let html = `
+            let products = response.data;
+            axios.get('http://localhost:8080/category')
+                .then(function (response) {
+                    let categories = response.data
+                    let role = checkRole();
+                    let html = `
      <div id="subheader" class="subheader row">
         <div class="container">
             <div class="toogle-nav-wrapper">
@@ -159,11 +175,7 @@ function showAll() {
     </div>
 </div>
 </div>       
-</div>
-<!--<div>-->
-<!--            <button onclick="addToCart(1)">Đặt món</button>-->
-<!--        </div>-->
-        
+</div>  
     <div class="title_module_main heading-bar d-flex justify-content-between align-items-center">
 <h2 class="heading-bar__title ">
 <a>Danh sách các sản phẩm</a>
@@ -172,8 +184,8 @@ function showAll() {
 <br>
 <div class="row">
 `
-            for (let i = 0; i < products.length; i++) {
-                html += `
+                    for (let i = 0; i < products.length; i++) {
+                        html += `
      <div class="col-sm-2">
        <div class="card">
             <div class="card-body">
@@ -184,36 +196,43 @@ function showAll() {
                  <div class="name_product">
                      <b class="card-text">${products[i].name}</b>
                  </div>
+                  <div class="quantity_product">
+                     <b class="card-text">Số lượng : ${products[i].quantity}</b>
+                 </div>
                  <div class="description_product">
-                     <p class="card-text">${products[i].description}</p>
+                     <p class="card-text">Miêu tả: ${products[i].description}</p>
                  </div>
                  <div class="price_product">
-                     <b>${products[i].price}</b>
+                     <b>Giá :${products[i].price}</b>
+                </div>
+                <div class="category_product">
+                     <b>Loại :${products[i].category.name}</b>
                 </div>
                  <div class="btn">
                      <button class="btn-order" onclick="addToCart()">Đặt món</button>
                  </div>
                   <div class="edit_product">`;
-                  if(role===1){
-                      html+=`<button class="edit" onclick="showFormUpdateProduct(${products[i].id})">Sửa</button>
+                        if (role === 1) {
+                            html += `<button class="edit" onclick="showFormUpdateProduct(${products[i].id})">Sửa</button>
                              <button class="delete" onclick="remove(${products[i].id})">Xóa</button>
                              `;
-                  }
-                html+=`</div>
+                        }
+                        html += `</div>
              </div>
          </div>
      </div>
                 `
-            }
-            html += `</div> `
-            document.getElementById("main").innerHTML = html;
+                    }
+                    html += `</div> `
+                    document.getElementById("main").innerHTML = html;
+                })
         })
 }
 
 function remove(id) {
     let check = confirm("Mày chắc chưa?")
     if(check){
-        axios.delete('http://localhost:8080/admin/product/delete/', id)
+        axios.delete('http://localhost:8080/admin/product/delete/' + id)
             .then(function (response) {
                 showAll()
                 alert("Đã xóa thành cmn công !")
@@ -224,7 +243,6 @@ function remove(id) {
 function checkRole() {
     let role = 0;
     for (let i = 0; i < getCurrentUser().roles.length; i++) {
-        console.log(getCurrentUser().roles[i].authority)
         if (getCurrentUser().roles[i].authority === "ROLE_ADMIN") {
             role=1;
             break;
