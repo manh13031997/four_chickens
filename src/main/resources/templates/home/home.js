@@ -85,18 +85,6 @@ function showAll() {
                     <div class="icon">
                         <a id="addProduct" class="btn" onclick="showFormCreateProduct()"><i class="fa-solid fa-cart-plus fa-xs"></i> Thêm sản phẩm</a>
                     </div>
-<!--                    <script>-->
-<!--                        let userRole = getCurrentUser().roles;-->
-<!--                        function checkAccessAndToggleButton() {-->
-<!--                            const addToCartButton = document.getElementById('addProduct');-->
-<!--                            if (userRole === 'ROLE_ADMIN') {-->
-<!--                                addToCartButton.style.display = 'block';-->
-<!--                            } else {-->
-<!--                                addToCartButton.style.display = 'none';-->
-<!--                            }-->
-<!--                        }-->
-<!--                        checkAccessAndToggleButton()-->
-<!--                    </script>-->
                 </li>
             </ul>
         </div>
