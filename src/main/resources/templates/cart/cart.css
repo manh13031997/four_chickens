@@ -1,3 +1,4 @@
+
 .btn-login {
     background-color: yellow;
     border-radius: 10px 10px 10px 10px;
@@ -21,9 +22,7 @@
 span {
     color: white;
 }
-/*.mini-cart:hover {*/
-/*    background-color: #f59421;*/
-/*}*/
+
 .mini-cart>a {
     display: flex;
     align-items: center;
@@ -143,115 +142,117 @@ html {
     border: 1px solid black;
 }
 .carousel_slide {
-    display: flex;
-    justify-content: center;
 }
 
--------------------------
-
-.item_product_main {
+.cart {
     border: 1px solid black;
-    width: 250px;
-    display: flex;
-    justify-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: center;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 20px 20px 20px 20px;
-}
-.image_product {
-
-    border-radius: 5px 5px 10px 10px;
-}
-.btn-order {
-    padding: 0px 40px 0px 40px;
-    border-radius: 20px 20px 20px 20px;
-}
-.btn-order:hover {
-    background-color: #f59421;
-}
-.products {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.description_product {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.description_product p{
-    justify-content: center;
-    word-wrap: break-word;
-}
-.price_product {
-    display: flex;
-    justify-content: center;
-}
-.btn {
-    display: flex;
-    justify-content: center;
-}
-.name_product {
-    display: flex;
-    justify-content: center;
-}
-.image_product {
-    margin-left: -6.5px;
-}
-.heading-bar {
-    font-size: 16px;
-    background: #fff;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    padding-top: 5px;
-}
-.heading-bar__title {
-    color: #000000;
-    font-size: 1.4em;
-    margin-left: 30px;
-    line-height: 1.2;
-}
-.heading-bar__title link {
-    padding-bottom: -100px;
-}
-.col-sm-2 {
-    transition: box-shadow 0.3s ease;
-}
-.col-sm-2:hover {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-.loginSuccess {
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-.logout {
-    border-radius: 15px 15px 15px 15px;
-    border: 1px solid white;
-}
-.logout:hover {
-    background-color: #f59421;
+    border-radius: 10px 10px 10px 10px;
+    width: 1000px;
+    margin-left: 300px;
+    margin-top: 20px;
 }
 
-.edit_product {
+    .cart_title {
+        border: 1px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0px 0px 10px 10px;
+        margin-left: 1px;
+        margin-right: 1px;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 5px;
+        align-content: center;
+    }
+
+    .col1 {
+        border: 0.5px solid black;
+        display: flex;
+        flex-direction: row;
+        border-top: none;
+        border-left: none;
+        border-bottom: none;
+        border-radius: 0px 10px 10px 0px;
+    }
+
+    .col2 {
+        border: 0.5px solid black;
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+        border-radius: 10px 0px 0px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .col_delete {
+        display: flex;
+        align-items: center;
+    }
+
+    .col_priceAndQuantity {
+        display: flex;
+        align-items: center;
+    }
+
+    .total {
+        display: flex;
+        justify-content: center;
+        margin-right: 15px;
+    }
+
+    .btn-pay {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .back {
     display: flex;
-    justify-content: center;
-}
-.edit {
-    border-radius: 10px 10px 10px 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.edit:hover{
-    background-color: #f59421;
-}
-.delete {
-    border-radius: 10px 10px 10px 10px;
-}
-.delete:hover{
-    background-color: #f59421;
-}
+        justify-content: center;
+    }
+
+    .img_product {
+        margin: 5px;
+    }
+
+    .pay {
+        border-radius: 5px 5px 5px 5px;
+        background-color: #ff5722;
+        margin-right: 10px;
+    }
+
+
+    .quantity {
+        display: flex;
+        max-width: 100px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+
+    input {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .plus {
+        width: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 3px;
+        padding-left: 8.8px;
+        padding-right: 9px;
+    }
+
+    button.minus {
+        order: -1;
+    }
+
+    .minus {
+        padding-left: 9.5px;
+        padding-right: 9.5px;
+        margin-right: 3px;
+    }
