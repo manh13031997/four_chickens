@@ -1,5 +1,5 @@
 function showFormUpdateProduct(id) {
-    axios.get('http://localhost:8080/admin/product/edit/', id)
+    axios.get('http://localhost:8080/product/' + id)
         .then(function (response) {
             let products = response.data
             axios.get('http://localhost:8080/category')
@@ -20,21 +20,21 @@ function showFormUpdateProduct(id) {
         <div class="col-4">
             <label for="">Nhập tên sản phẩm:</label>
             <div class="input-group flex-nowrap">
-            <input type="text" id="name" class="form-control" value="${products.name} placeholder="Tên sản phẩm" aria-label="Username" aria-describedby="addon-wrapping"">
+            <input type="text" id="name" class="form-control" value="${products.name}" placeholder="Tên sản phẩm" aria-label="Username" aria-describedby="addon-wrapping"">
             </div>
             <br>
             <label for="">Nhập số lượng sản phẩm:</label>
             <div class="input-group flex-nowrap">
-            <input type="text" id="quantity" class="form-control" value="${products.quantity} placeholder="Số lượng sản phẩm" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" id="quantity" class="form-control" value="${products.quantity}" placeholder="Số lượng sản phẩm" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <br>
             <label for="">Nhập giá sản phẩm/1kg:</label>
             <div class="input-group flex-nowrap">
-            <input type="text" id="price" class="form-control" value="${products.price} placeholder="Giá sản phẩm/1kg" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" id="price" class="form-control" value="${products.price}" placeholder="Giá sản phẩm/1kg" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <br>
             <label for="">Mô tả sản phẩm đi em :</label>
-            <textarea cols="31" rows="3" id="description" value="${products.description}>
+            <textarea cols="31" rows="3" id="description" value="${products.description}">
             </textarea>
             
             <select class="custom-select" id="idCategory">`
@@ -45,7 +45,8 @@ function showFormUpdateProduct(id) {
                     html += `</select>
 
             <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
-            <button type="button" class="btn btn-primary" onclick="update()" >Sửa thì ấn vào</button>
+            <button type="button" class="btn btn-primary" onclick="update(${products.id})" >Sửa thì ấn vào</button>
+            <button type="button" class="btn btn-primary" onclick="showAll()" >Quay lại</button>
             </div>  
         </div>
     </div>
@@ -58,7 +59,7 @@ function showFormUpdateProduct(id) {
         })
 }
 
-function update() {
+function update(id) {
     let name = document.getElementById("name").value;
     let quantity = document.getElementById("quantity").value;
     let price = document.getElementById("price").value;
@@ -77,4 +78,8 @@ function update() {
         }
     }
     console.log(updateProduct);
+    axios.put('http://localhost:8080/admin/product/edit/' + id,updateProduct)
+        .then(function (rep) {
+            showAll()
+        })
 }

@@ -48,13 +48,13 @@
 
                     </div>
                     <div class="col-xl-5 col-lg-4 col-12 header-center" id="search-header">
-                        <form action="/search" method="get" class="input-group search-bar custom-input-group "
+                        <div  class="input-group search-bar custom-input-group "
                               role="search">
-                            <input type="text" name="query" value="" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+                            <input type="text" id="1" name="query" value="" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
                                    class="input-group-field auto-search form-control " required="">
                             <input type="hidden" name="type" value="product">
                             <span class="input-group-btn btn-action">
-							<button type="submit" class="btn text-white icon-fallback-text h-100">
+							<button onclick="search()" type="submit" class="btn text-white icon-fallback-text h-100">
 								<span class="fa fa-search"> </span>
 							</button>
 						</span>
@@ -64,7 +64,7 @@
                                 <div class="list-search2 list-search-style">
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="col-4 col-xl-5 col-lg-6 ">
                         <ul class="header-left mb-0 float-right list-unstyled  d-flex align-items-center">

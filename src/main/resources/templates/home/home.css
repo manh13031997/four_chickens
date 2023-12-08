@@ -255,3 +255,56 @@ html {
 .delete:hover{
     background-color: #f59421;
 }
+.quantity_product {
+    display: flex;;
+    justify-content: center;
+}
+.category_product {
+    display: flex;;
+    justify-content: center;
+}
+.icon_homePage:hover {
+    color: blue;
+}
+.icon_create {
+    margin-top: -1px;
+    margin-right: 3px;
+    margin-left: 170px;
+}
+.icon_create:hover {
+    color: #28a745;
+}
+.icon_intro {
+    margin-left: 130px;
+}
+.icon_intro:hover{
+    color: darkorange;
+}
+.card:hover {
+    background-color: antiquewhite;
+}
+body {
+    background-image: url("https://i.pinimg.com/564x/31/9f/8f/319f8f4ffafcdb395c3e31569014e89a.jpg");
+}
+
+---------------------
+.col2_slides {
+    height: 300px;
+    border: 1px solid black;
+    width: 600px;
+}
+.col1_slides {
+    height: 300px;
+    border: 1px solid black;
+    width: 300px;
+}
+.col3_slides {
+    height: 300px;
+    border: 1px solid black;
+    width: 300px;
+}
+.row_slides {
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+}

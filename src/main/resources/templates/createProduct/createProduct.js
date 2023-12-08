@@ -8,7 +8,7 @@ function showFormCreateProduct() {
 <br>
     <div class="container" id="container">
      <div class="row row-create">
-        <div class="col-8">
+        <div class="col-8 col_img">
             <h5>Chọn file ảnh</h5>
             <input type="file" id="fileButton" onchange="uploadImage(event)">
             <input type="hidden" id="image">
@@ -43,7 +43,7 @@ function showFormCreateProduct() {
             html += `</select>
 
             <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
-            <button type="button" class="btn btn-primary" onclick="create()" >Thêm thì ấn vào</button>
+            <button type="button" class="btn btn-primary" onclick="create()" >Thêm sản phẩm</button>
             <button type="button" class="btn btn-secondary" onclick="showAll()" >Quay lại</button>
             </div>  
         </div>
@@ -74,10 +74,10 @@ function create() {
             id : idCategory
         }
     }
-    axios.post('http://localhost:8080/admin/product/create', {headers: {"Authorization": `Bearer ${auHeader()}`}},newProduct)
+    axios.post('http://localhost:8080/admin/product/create', newProduct,{headers: {"Authorization": `Bearer ${auHeader()}`}})
         .then(function (response) {
-            showAll();
             alert("Thêm sản phẩm mới thành công !!")
+            showAll();
         })
 }
 

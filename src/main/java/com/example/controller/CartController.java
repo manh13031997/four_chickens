@@ -34,7 +34,7 @@ public class CartController {
     @PostMapping("/addToCart")
     public ResponseEntity<?> addToCart(@RequestBody CartRequest cartRequest) {
         Cart cart = new Cart();
-        cart.setQuantity(cart.getQuantity());
+//        cart.setQuantity(cart.getQuantity());
         cart.setIdProduct(cartRequest.getIdProduct());
         cart.setIdUser(cartRequest.getIdUser());
         Cart cart1 = cartService.save(cart);
