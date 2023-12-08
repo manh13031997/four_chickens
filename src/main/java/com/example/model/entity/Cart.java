@@ -16,4 +16,5 @@ public class Cart {
     private Long quantity;
     private Long idProduct;
     private Long idUser;
+    private String status_buy;
 }

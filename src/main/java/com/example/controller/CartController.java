@@ -32,6 +32,9 @@ public class CartController {
         Cart cart = new Cart();
         cart.setIdProduct(cartRequest.getIdProduct());
         cart.setIdUser(cartRequest.getIdUser());
+        cart.setIdUser(cartRequest.getIdUser());
+        cart.setIdUser(cartRequest.getIdUser());
+
         Cart cart1 = cartService.save(cart);
         return new ResponseEntity<>(cart1, HttpStatus.OK);
     }

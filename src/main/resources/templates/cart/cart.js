@@ -1,14 +1,16 @@
 function showCart() {
-
     axios.get('http://localhost:8080/product/cart')
         .then( (response) => {
             let products = response.data;
+            console.log(products)
             let html = `
    <div class="cart">
-    <div class="row cart_title">
-        <h3><i class="fa-solid fa-cart-shopping fa-beat-fade"></i>Giỏ hàng</h3>
-    </div>
-    <div class="row row_into">
+        <div class="row cart_title">
+              <h3><i class="fa-solid fa-cart-shopping fa-beat-fade"></i>Giỏ hàng</h3>
+        </div>
+        <div class="row row_into">`
+            for (let i = 0; i < products.length; i++) {
+                html += `   
         <div class="col-9 col1">
             <div class="col-1 col_delete">
                 <div class="delete">
@@ -18,14 +20,13 @@ function showCart() {
             <div class="col-8">
                 <div class="img_product">
                     <img style="height: 150px; width: 150px"
-                         src="https://i.pinimg.com/236x/77/b5/be/77b5be6a080ccc382f14dbf2ec792df6.jpg" alt="">
-                    <b>Combo family 89k_002</b>
+                         src="${products[i].photo}" alt="">
+                    <b>${products[i].name}</b>
                 </div>
-
             </div>
             <div class="col-3 col_priceAndQuantity">
                 <div class="priceAndQuantity">
-                    <b>Giá tiền tương ứng</b>
+                    <b>${products[i].price}</b>
                     <div class="quantity">
                         <button class="minus" onclick="decreaseQuantity()">-</button>
                         <input type="text" id="quantityInput" value="1">
@@ -34,33 +35,34 @@ function showCart() {
                 </div>
             </div>
         </div>
-        <div class="col-3 col2">
-            <div class="row total">
-                <b>Tổng tiền:  ... </b>
+                `
+            }
+            `</div>
+            <div className="col-3 col2">
+                <div class="row total">
+                    <b>Tổng tiền:  ... </b>
+                </div>
+                <div class="btn-pay">
+                    <button class="pay" >Tiến hành thanh toán</button>
+                </div>
+                <div className="back">
+                    <a className="btn" onClick="checkLoggedIn()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
+                </div>
             </div>
-            <div class="btn-pay">
-                <button class="pay">Tiến hành thanh toán</button>
-            </div>
-            <div class="back">
-                <a class="btn" onclick="checkLoggedIn()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
-            </div>
-        </div>
-        
-        <div>
-        <table id="myTable">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody">
-        <!-- Table body will be populated dynamically -->
-        ${generateTableBody(products)}
-    </tbody>
-</table>
-</div>
-    </div>
+           
+            <table id="myTable">
+     <thead>
+         <tr>
+             <th>id</th>
+             <th>Action</th>
+         </tr>
+     </thead>
+     <tbody id="tableBody">
+         <!-- Table body will be populated dynamically -->
+         ${generateTableBody(products)}
+     </tbody>
+ </table>
+
 </div>
     `
             document.getElementById("main").innerHTML = html;
@@ -89,7 +91,7 @@ function decreaseQuantity() {
     }
 }
 let arrCart = null;
-// Hàm tăng số lượng
+
 function increaseQuantity() {
     var quantityInput = document.getElementById('quantityInput');
     var currentQuantity = parseInt(quantityInput.value);
