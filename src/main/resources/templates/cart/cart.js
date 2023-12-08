@@ -1,5 +1,5 @@
 function showCart() {
-    axios.get('http://localhost:8080/product/cart')
+    axios.get('http://localhost:8080/product/cart/'+ getCurrentUser().id)
         .then( (response) => {
             let products = response.data;
             console.log(products)
@@ -14,7 +14,7 @@ function showCart() {
         <div class="col-9 col1">
             <div class="col-1 col_delete">
                 <div class="delete">
-                    <button onclick="deleteForm()">xoa</button>
+                    <button onclick="deleteForm(${products[i].id})">xoa</button>
                 </div>
             </div>
             <div class="col-8">
@@ -37,7 +37,8 @@ function showCart() {
         </div>
                 `
             }
-            `</div>
+
+            html += `</div>
             <div className="col-3 col2">
                 <div class="row total">
                     <b>Tổng tiền:  ... </b>
@@ -49,19 +50,7 @@ function showCart() {
                     <a className="btn" onClick="checkLoggedIn()"><i class="fa fa-arrow-left "></i> Tiếp tục mua hàng</a>
                 </div>
             </div>
-           
-            <table id="myTable">
-     <thead>
-         <tr>
-             <th>id</th>
-             <th>Action</th>
-         </tr>
-     </thead>
-     <tbody id="tableBody">
-         <!-- Table body will be populated dynamically -->
-         ${generateTableBody(products)}
-     </tbody>
- </table>
+
 
 </div>
     `
@@ -106,18 +95,20 @@ function getCardByIdUser() {
         })
 }
 
-function generateTableBody(products) {
-    if (products && products.length > 0) {
-        return products.map(product => `
-            <tr>
-                <td>${product.id}</td>
-                <td><button onclick="deleteForm('${product.id}')">Xoá</button></td>
-            </tr>
-        `).join('');
-    } else {
-        return `<tr><td colspan="2"><b>Giỏ hàng trống.</b></td></tr>`;
-    }
-}
+// function generateTableBody(products) {
+//     let html = ``;
+//     if (products && products.length > 0) {
+//         html+= products.map(product => `
+//             <tr>
+//                 <td>${product.id}</td>
+//                 <td><button onclick="deleteForm('${product.id}')">Xoá</button></td>
+//             </tr>
+//         `).join('');
+//         return html;
+//     } else {
+//         return `<tr><td colspan="2"><b>Giỏ hàng trống.</b></td></tr>`;
+//     }
+// }
 
 function deleteForm(id) {
     let check = confirm("Xoa Nhe")

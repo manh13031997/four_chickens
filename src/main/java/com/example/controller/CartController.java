@@ -26,9 +26,9 @@ public class CartController {
     private IProductService productService;
     @Autowired
     private ICartService cartService;
-    @GetMapping("/cart")
-    public List<Cart> getAll(){
-        return cartService.findAll();
+    @GetMapping("/cart/{id}")
+    public List<Cart> getAll(@PathVariable Long id){
+        return cartService.getByIdUser(id);
     }
 
     @PostMapping("/addToCart")
