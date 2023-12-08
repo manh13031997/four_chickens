@@ -33,7 +33,7 @@ function addToCart(id) {
             idUser: getCurrentUser().id,
             idProduct: id
         }
-        axios.post("http://localhost:8080/product/addToCart", product).then(function (res) {
+        axios.post("http://localhost:8080/product/addToCart" , product).then(function (res) {
             console.log(res)
         })
         getTotal().then(r => {
@@ -133,32 +133,36 @@ function search() {
         </ul>
     </nav>
 </div>
-<div class="col-9">
-<div class="carousel-inner" style="text-align: center;">
-        <div>
-            <div class="carousel-item active" data-interval="10000">
-                <img class="d-block w-100"><img src="img/hoa%20qua.jpg" height="375" width="600">
-            </div>
-            <div class="carousel-item" data-interval="2000">
-                <img class="d-block w-100"><img src="img/hoa%20qua2.jpg" height="375" width="600">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100"><img src="img/hoa%20qua3.jpg" height="375" width="600">
-            </div>
 
-            <button class="carousel-control-prev " type="button" data-target="#carouselExampleInterval"
-                    data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next " type="button" data-target="#carouselExampleInterval"
-                    data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </button>
-        </div>
+<div class=" row_slides">
+     <div class=" col1_slides"></div>
+     <div class=" col2_slides">
+     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="10000">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_1.jpg?1701673081658" class="d-block w-100" alt="...">
     </div>
+    <div class="carousel-item" data-interval="2000">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_2.jpg?1701673081658" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_3.jpg?1701673081658" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
 </div>
+   
+</div>
+     <div class=" col3_slides"></div>
+     </div>
+
 </div>       
 </div>  
     <div class="title_module_main heading-bar d-flex justify-content-between align-items-center">
@@ -350,12 +354,13 @@ function showAll() {
 }
 
 function remove(id) {
-    let check = confirm("Mày chắc chưa?")
+    let check = confirm("Bạn chắc chắn xóa chứ?")
     if(check){
-        axios.delete('http://localhost:8080/admin/product/delete/' + id)
+        axios.delete('http://localhost:8080/product/delete/' + id)
             .then(function (response) {
-                showAll()
-                alert("Đã xóa thành cmn công !")
+                alert("Đã xóa thành công !")
+                showAll();
+
             })
     }
 }
@@ -379,56 +384,35 @@ function showAllProduct() {
 <br>
      <div id="carouselExampleInterval" class="carousel_slide" data-ride="carousel"
      class="col-lg-3 d-lg-block d-none navigation-wrapper pr-0">
-     <div class="row">
-     <div class="col-3">
-     <nav class="h-100">
-        <ul class="navigation list-group list-group-flush scroll">
-            <li class="menu-item list-group-item">
-                <a href="#" class="menu-item__link" title="Sản phẩm sơ chế">
-                    Các Loại Rau
-                </a>
-
-            </li>
-            <li class="menu-item list-group-item">
-                <a href="#" class="menu-item__link" title="Rau củ quả ép nước">
-                    Các Loại Củ
-                </a>
-            </li>
-            <li class="menu-item list-group-item">
-                <a href="#" class="menu-item__link" title="Trái cây tươi">
-                    Trái cây tươi
-                </a>
-
-            </li>
-        </ul>
-    </nav>
-</div>
-<div class="col-9">
-<div class="carousel-inner" style="text-align: center;">
-        <div>
-            <div class="carousel-item active" data-interval="10000">
-                <img class="d-block w-100"><img src="img/hoa%20qua.jpg" height="375" width="600"/>
-            </div>
-            <div class="carousel-item" data-interval="2000">
-                <img class="d-block w-100"><img src="img/hoa%20qua2.jpg" height="375" width="600"/>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100"><img src="img/hoa%20qua3.jpg" height="375" width="600"/>
-            </div>
-
-            <button class="carousel-control-prev " type="button" data-target="#carouselExampleInterval"
-                    data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next " type="button" data-target="#carouselExampleInterval"
-                    data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </button>
-        </div>
+   
+<div class=" row_slides">
+     <div class=" col1_slides"></div>
+     <div class=" col2_slides">
+     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="10000">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_1.jpg?1701673081658" class="d-block w-100" alt="...">
     </div>
+    <div class="carousel-item" data-interval="2000">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_2.jpg?1701673081658" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img style="height: 300px; width: 500px" src="https://bizweb.dktcdn.net/100/435/899/themes/927741/assets/slider_3.jpg?1701673081658" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
 </div>
+   
+</div>
+     <div class=" col3_slides"></div>
+     </div>
 </div>       
 </div>
 

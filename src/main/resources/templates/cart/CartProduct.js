@@ -41,7 +41,7 @@ showReset();
 
 
 function deleteReset(id) {
-    axios.delete(`http://localhost:8080/product/delete` +id )
+    axios.delete('http://localhost:8080/product/' +id )
         .then((res) => {
             console.log('Sản phẩm đã được xóa:', res.data);
             showCart();

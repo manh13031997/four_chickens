@@ -35,12 +35,12 @@ public class CartController {
 
     @PostMapping("/addToCart")
     public ResponseEntity<?> addToCart(@RequestBody CartRequest cartRequest) {
-        Optional<Product> product = productService.findById(cartRequest.getIdProduct());
+//        Optional<Product> product = productService.findById(cartRequest.getIdProduct());
         Cart cart = new Cart();
-        cart.setQuantity(cart.getQuantity());
+//        cart.setQuantity(cart.getQuantity());
         cart.setIdProduct(cartRequest.getIdProduct());
         cart.setIdUser(cartRequest.getIdUser());
-        cart.setPrice(cart.getPrice());
+//        cart.setPrice(cart.getPrice());
         Cart cart1 = cartService.save(cart);
         return new ResponseEntity<>(cart1, HttpStatus.OK);
     }

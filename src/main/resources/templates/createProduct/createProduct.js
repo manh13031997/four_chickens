@@ -43,7 +43,7 @@ function showFormCreateProduct() {
             html += `</select>
 
             <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
-            <button type="button" class="btn btn-primary" onclick="create()" >Thêm thì ấn vào</button>
+            <button type="button" class="btn btn-primary" onclick="create()" >Thêm sản phẩm</button>
             <button type="button" class="btn btn-secondary" onclick="showAll()" >Quay lại</button>
             </div>  
         </div>
@@ -76,8 +76,8 @@ function create() {
     }
     axios.post('http://localhost:8080/admin/product/create', newProduct,{headers: {"Authorization": `Bearer ${auHeader()}`}})
         .then(function (response) {
-            showAll();
             alert("Thêm sản phẩm mới thành công !!")
+            showAll();
         })
 }
 

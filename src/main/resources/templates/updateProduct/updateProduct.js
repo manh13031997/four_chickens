@@ -46,6 +46,7 @@ function showFormUpdateProduct(id) {
 
             <div style="width: 100%; display: flex; justify-content: center; margin-top: 18px">
             <button type="button" class="btn btn-primary" onclick="update(${products.id})" >Sửa thì ấn vào</button>
+            <button type="button" class="btn btn-primary" onclick="showAll()" >Quay lại</button>
             </div>  
         </div>
     </div>
