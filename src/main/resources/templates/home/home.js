@@ -112,18 +112,12 @@ function search() {
                 <a href="#" class="menu-item__link" title="Sản phẩm sơ chế">
                     Các Loại Rau
                 </a>
-
             </li>
-
-
             <li class="menu-item list-group-item">
                 <a href="#" class="menu-item__link" title="Rau củ quả ép nước">
                     Các Loại Củ
                 </a>
-
             </li>
-
-
             <li class="menu-item list-group-item">
                 <a href="#" class="menu-item__link" title="Trái cây tươi">
                     Trái cây tươi
