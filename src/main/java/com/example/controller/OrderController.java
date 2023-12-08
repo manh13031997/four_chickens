@@ -66,7 +66,7 @@ public class OrderController {
     }
 
     //lấy ra tất cả order.
-    @GetMapping("/admin/order")
+    @GetMapping("/order")
     public ResponseEntity<List<Orders>> findAllOrderDetail() {
         List<Orders> ordersList = orderService.findOrder();
         if (ordersList.isEmpty()) {

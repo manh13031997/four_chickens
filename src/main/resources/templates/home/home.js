@@ -470,6 +470,7 @@ function showAllProduct() {
             document.getElementById("main").innerHTML = html;
         })
 }
+getCardByIdUser()
 
 
 
