@@ -1,4 +1,8 @@
-async function showCart() {
+function showCart() {
+
+    axios.get('http://localhost:8080/product/cart')
+        .then( (response) => {
+            let products = response.data;
             let html = `
    <div class="cart">
     <div class="row cart_title">
@@ -52,6 +56,7 @@ async function showCart() {
     </thead>
     <tbody id="tableBody">
         <!-- Table body will be populated dynamically -->
+        ${generateTableBody(products)}
     </tbody>
 </table>
 </div>
@@ -59,35 +64,18 @@ async function showCart() {
 </div>
     `
             document.getElementById("main").innerHTML = html;
-    var tableBody = document.getElementById("tableBody");
+            getCardByIdUser();
+            getTotal().then(r => {});
+    })
 
-    // Loop through each item in arrCart
-    if (this.arrCart && this.arrCart.length > 0) {
-        // Loop through each item in arrCart
-        for (var i = 0; i < this.arrCart.length; i++) {
-            // Create a new row
-            var newRow = tableBody.insertRow(tableBody.rows.length);
 
-            var cellID = newRow.insertCell(0);
-            var cellIDProduct = newRow.insertCell(1);
+}
 
-            cellID.innerHTML = this.arrCart[i].id;
-            cellIDProduct.innerHTML = `<button onclick="deleteForm('${this.arrCart[i].id}')">Xoá</button>`;
-
-        }
-    } else {
-        // Hiển thị thông báo khi giỏ hàng trống
-        var emptyCartRow = tableBody.insertRow(0);
-        var emptyCartCell = emptyCartRow.insertCell(0);
-        emptyCartCell.colSpan = 2; // Chỉnh lại số cột cho cell này
-        emptyCartCell.innerHTML = "<b>Giỏ hàng trống.</b>";
-    }
-}   
 // showCart();
 function checkLoggedIn() {
-    if(getCurrentUser()){
+    if (getCurrentUser()) {
         showAll()
-    }else {
+    } else {
         showAllProduct()
     }
 }
@@ -100,7 +88,7 @@ function decreaseQuantity() {
         quantityInput.value = currentQuantity - 1;
     }
 }
-const arrCart = null
+let arrCart = null;
 // Hàm tăng số lượng
 function increaseQuantity() {
     var quantityInput = document.getElementById('quantityInput');
@@ -108,21 +96,41 @@ function increaseQuantity() {
 
     quantityInput.value = currentQuantity + 1;
 }
-function getCardByIdUser () {
+
+function getCardByIdUser() {
     axios.get(`http://localhost:8080/product/getById/${getCurrentUser().id}`)
         .then((res) => {
-            this.arrCart = res.data
-            console.log(this.arrCart)
+            arrCart = res.data
         })
 }
-async function deleteForm(id) {
-    await axios.delete(`http://localhost:8080/product/${id}`)
-        .then((res) => {
-        })
-        .catch((error) => {
-        });
-    await showCart()
-    // window.location.reload()
 
+function generateTableBody(products) {
+    if (products && products.length > 0) {
+        return products.map(product => `
+            <tr>
+                <td>${product.id}</td>
+                <td><button onclick="deleteForm('${product.id}')">Xoá</button></td>
+            </tr>
+        `).join('');
+    } else {
+        return `<tr><td colspan="2"><b>Giỏ hàng trống.</b></td></tr>`;
+    }
 }
-getCardByIdUser()
+
+function deleteForm(id) {
+    let check = confirm("Xoa Nhe")
+    if (check) {
+        axios.delete(`http://localhost:8080/product/` + id)
+            .then((res) => {
+                showCart();
+            })
+            .catch((error) => {
+                console.error('Lỗi khi xóa:', error);
+            });
+    } else {
+        alert("Suy nghi ki di!")
+    }
+}
+
+getCardByIdUser();
+
