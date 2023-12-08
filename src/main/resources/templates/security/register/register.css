@@ -1,0 +1,121 @@
+.btn_register {
+    background-color: yellow;
+    border-radius: 10px 10px 10px 10px;
+    padding: 7px;
+}
+
+.section {
+    margin-top: -16px;
+}
+.row-content {
+    height: 430px;
+}
+.btn-login {
+    background-color: #fbd947;
+    border-radius: 10px 10px 10px 10px;
+    padding: 5px;
+}
+
+.mid-header {
+    background-color: #135a30;
+}
+.btn-action {
+    background-color: orange;
+    border-radius: 0 10px 10px 0;
+}
+.mid-header a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+span {
+    color: white;
+}
+
+.mini-cart>a {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 2px solid white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.img_hover_cart span:hover {
+    text-decoration: none;
+}
+
+.img_hover_cart:hover {
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+}
+.count_item {
+    background-color: #f59421;
+    padding: 3px;
+    border-radius: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+}
+.font-weight-bold:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.li-block:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.font-weight:hover {
+    text-decoration: none;
+    color: #f59421;
+}
+.image-fluid {
+    max-width: 70%;
+    height: auto;
+    padding-bottom: 5px;
+}
+
+
+
+
+.shop-policies{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    /*flex-wrap: nowrap;*/
+    justify-content: flex-start;
+}
+.subheader {
+    height: 35px;
+}
+.subheader .container {
+    display: grid;
+    grid-template-columns: calc(100% / 3 - 90px) 1fr;
+    justify-content: space-between;
+    align-items: center;
+}
+.subheader .container .icon {
+    margin-left: 50px;
+}
+
+.col2{
+    border: 1px solid black;
+    height: 35px;
+}
+
+.nav_bar .row .col-12 .breadcrumb span {
+    font-weight: 300;
+    font-size: 14px;
+    color: black;
+}
+.nav_bar .row .col-12 .breadcrumb a {
+    padding-left: 110px;
+}
+.nav_bar .row .col-12 .breadcrumb a:hover {
+    color: green;
+    text-decoration: none;
+}
+
+
