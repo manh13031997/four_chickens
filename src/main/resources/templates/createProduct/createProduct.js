@@ -8,7 +8,7 @@ function showFormCreateProduct() {
 <br>
     <div class="container" id="container">
      <div class="row row-create">
-        <div class="col-8">
+        <div class="col-8 col_img">
             <h5>Chọn file ảnh</h5>
             <input type="file" id="fileButton" onchange="uploadImage(event)">
             <input type="hidden" id="image">

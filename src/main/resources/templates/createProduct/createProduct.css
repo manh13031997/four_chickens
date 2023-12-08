@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
 }
-.col-8 {
+.col-8 col_img{
     border: 1px solid black;
     border-radius: 20px  20px  20px  20px;
     border-top: none ;
